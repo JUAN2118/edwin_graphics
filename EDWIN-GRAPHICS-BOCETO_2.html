@@ -1,0 +1,2028 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>EDWIN GRAPHICS | Calcomanías Premium para Motocicletas — Palos Verde, Restrepo, Meta</title>
+<meta name="description" content="Diseño, fabricación e instalación de calcomanías premium para motocicletas en Palos Verde, Restrepo, Meta. Guardabarros, tanques, laterales y carenajes con diseños exclusivos y vinilo 100% premium.">
+<meta name="keywords" content="calcomanías motos, stickers motos, kits motos, EDWIN GRAPHICS, Restrepo Meta, Palos Verde, guardabarro moto, tanque moto, carenaje moto, diseño gráfico motos">
+<meta name="author" content="EDWIN GRAPHICS">
+<link rel="canonical" href="https://www.edwingraphics.com/">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="EDWIN GRAPHICS | Calcomanías Premium para Motocicletas">
+<meta property="og:description" content="Diseño, fabricación e instalación de calcomanías premium para motocicletas. Palos Verde, Restrepo, Meta - Colombia.">
+<meta property="og:image" content="/assets/images/og-cover.jpg">
+<meta property="og:url" content="https://www.edwingraphics.com/">
+<meta property="og:locale" content="es_CO">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="EDWIN GRAPHICS | Calcomanías Premium para Motocicletas">
+<meta name="twitter:description" content="Diseño, fabricación e instalación de calcomanías premium para motocicletas en Palos Verde, Restrepo, Meta.">
+<meta name="twitter:image" content="/assets/images/og-cover.jpg">
+
+<!-- Favicons -->
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon-16x16.png">
+<link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+
+<!-- Preload de fuentes críticas -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<!-- Estilos -->
+<style>
+/* =========================================================
+   INTRO PREMIUM — EDWIN GRAPHICS
+   Secuencia cinematografica minimalista (~2s), inspirada en
+   marcas de lujo (Apple / Porsche / Tesla). Sin motos, sin
+   SVG de vehiculo, sin sonido. Solo luz, particulas y logo.
+   Construida con GSAP (ver el script INTRO.JS mas abajo).
+   ========================================================= */
+
+html.eg-lock, html.eg-lock body{ overflow:hidden; height:100%; }
+
+#eg-loader{
+  position:fixed; inset:0; z-index:9999;
+  background:#050505;
+  display:flex; align-items:center; justify-content:center;
+  overflow:hidden;
+}
+
+/* Resplandor rojo ambiental, muy sutil */
+.eg-loader__glow{
+  position:absolute; left:50%; top:50%; width:70vmax; height:70vmax;
+  transform:translate(-50%,-50%) scale(.4);
+  background:radial-gradient(circle at center, rgba(255,0,0,.35), rgba(255,0,0,0) 68%);
+  opacity:0;
+  filter:blur(10px);
+  pointer-events:none;
+}
+
+/* Linea roja que atraviesa la pantalla horizontalmente */
+.eg-loader__line{
+  position:absolute; top:50%; left:50%;
+  width:0; height:1.5px;
+  background:linear-gradient(90deg, transparent, var(--red,#ff0000) 20%, var(--red,#ff0000) 80%, transparent);
+  transform:translate(-50%,-50%);
+  box-shadow:0 0 18px 1px rgba(255,0,0,.7);
+  opacity:0;
+  pointer-events:none;
+}
+
+/* Particulas luminosas flotando */
+.eg-loader__particle{
+  position:absolute; width:2.5px; height:2.5px; border-radius:50%;
+  background:#fff; opacity:0;
+  box-shadow:0 0 6px 1px rgba(255,255,255,.6);
+  pointer-events:none;
+}
+
+/* Logo + tagline */
+.eg-loader__mark{ position:relative; z-index:2; text-align:center; }
+.eg-loader__logo{
+  font-family:var(--font-display,'Anton',sans-serif);
+  font-size:clamp(2rem, 7vw, 3.6rem);
+  letter-spacing:.05em;
+  color:#fff;
+  opacity:0;
+  transform:translateY(14px);
+}
+.eg-loader__logo span{ color:var(--red,#ff0000); }
+.eg-loader__tag{
+  margin-top:10px;
+  font-family:var(--font-body,'Inter',sans-serif);
+  font-size:.72rem;
+  letter-spacing:.32em;
+  text-transform:uppercase;
+  color:rgba(255,255,255,.62);
+  opacity:0;
+  transform:translateY(10px);
+}
+
+/* Destello final antes de mostrar la pagina */
+.eg-loader__flash{
+  position:fixed; inset:0; z-index:10000;
+  background:#fff; opacity:0; pointer-events:none;
+}
+
+@media (prefers-reduced-motion: reduce){
+  #eg-loader{ display:none !important; }
+  html.eg-lock{ overflow:auto; }
+}
+</style>
+<style>
+/* =========================================================
+   STYLE.CSS — EDWIN GRAPHICS
+   Sistema de diseño: negro profundo / rojo deportivo / blanco
+   Tipografía: Anton (display) + Inter (texto y UI)
+   ========================================================= */
+
+/* ---------- TOKENS ---------- */
+:root{
+  --black:#050505;
+  --black-soft:#0d0d0d;
+  --gray-dark:#141414;
+  --gray-mid:#2a2a2a;
+  --gray-line:#232323;
+  --white:#ffffff;
+  --white-soft:rgba(255,255,255,0.72);
+  --red:#ff0000;
+  --red-dark:#c50000;
+
+  --font-display:'Anton', 'Arial Narrow', sans-serif;
+  --font-body:'Inter', system-ui, sans-serif;
+
+  --container:1240px;
+  --radius-sm:4px;
+  --radius-md:10px;
+  --ease:cubic-bezier(.16,.84,.44,1);
+}
+
+*,*::before,*::after{ box-sizing:border-box; }
+html{ scroll-behavior:smooth; }
+body{
+  margin:0;
+  background:var(--black);
+  color:var(--white);
+  font-family:var(--font-body);
+  line-height:1.5;
+  -webkit-font-smoothing:antialiased;
+}
+img{ max-width:100%; display:block; }
+a{ color:inherit; text-decoration:none; }
+button{ font-family:inherit; cursor:pointer; }
+:focus-visible{ outline:2px solid var(--red); outline-offset:3px; }
+
+h1,h2,h3{ font-family:var(--font-display); text-transform:uppercase; margin:0; letter-spacing:0.01em; }
+
+.eg-eyebrow{
+  font-size:0.72rem;
+  letter-spacing:0.28em;
+  text-transform:uppercase;
+  color:var(--red);
+  margin:0 0 10px;
+  font-weight:600;
+}
+
+.eg-section-head{
+  max-width:640px;
+  margin:0 auto 48px;
+  text-align:center;
+  padding:0 24px;
+}
+.eg-section-head h2{ font-size:clamp(1.8rem, 4vw, 2.8rem); position:relative; display:inline-block; }
+.eg-section-head h2::after{
+  content:'';
+  display:block;
+  width:64px; height:3px; margin:18px auto 0;
+  background:linear-gradient(90deg, var(--red), transparent);
+  border-radius:2px;
+}
+
+section{ padding:120px 24px; position:relative; }
+
+/* Salpicaduras rojas sutiles reutilizables en secciones clave (street art, sin sobrecargar) */
+.eg-catalog::before, .eg-about::before{
+  content:'';
+  position:absolute; top:0; right:0; width:340px; height:340px;
+  background:radial-gradient(circle at 80% 10%, rgba(255,0,0,0.08), transparent 65%);
+  pointer-events:none; z-index:0;
+}
+.eg-catalog > *, .eg-about > *{ position:relative; z-index:1; }
+
+/* ---------- BOTONES ---------- */
+.eg-btn{
+  position:relative;
+  overflow:hidden;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:16px 32px;
+  font-size:0.78rem;
+  letter-spacing:0.14em;
+  text-transform:uppercase;
+  font-weight:700;
+  border-radius:2px;
+  border:1px solid transparent;
+  transition:transform 0.3s var(--ease), background 0.3s var(--ease), border-color 0.3s var(--ease), box-shadow 0.35s var(--ease);
+}
+.eg-btn:hover{ transform:translateY(-2px) scale(1.015); }
+.eg-btn:active{ transform:translateY(0) scale(0.98); }
+.eg-btn--primary{ background:var(--red); color:var(--white); box-shadow:0 10px 24px -12px rgba(255,0,0,0.5); }
+.eg-btn--primary:hover{ background:var(--red-dark); box-shadow:0 16px 34px -10px rgba(255,0,0,0.65); }
+.eg-btn--outline{ border-color:rgba(255,255,255,0.4); color:var(--white); }
+.eg-btn--outline:hover{ border-color:var(--red); box-shadow:0 0 22px -6px rgba(255,0,0,0.45); }
+.eg-btn--whatsapp{ background:var(--white); color:var(--black); }
+.eg-btn--whatsapp:hover{ box-shadow:0 14px 30px -12px rgba(255,255,255,0.35); }
+.eg-btn--ghost{ background:transparent; color:var(--white-soft); border-color:var(--gray-line); }
+.eg-btn--ghost:hover{ border-color:var(--red); color:var(--white); }
+.eg-btn--full{ width:100%; }
+
+/* Ripple al hacer click (microanimación premium) */
+.eg-ripple{
+  position:absolute;
+  border-radius:50%;
+  background:rgba(255,255,255,0.45);
+  transform:scale(0);
+  opacity:0.9;
+  animation:eg-ripple-anim 0.6s var(--ease);
+  pointer-events:none;
+}
+@keyframes eg-ripple-anim{
+  to{ transform:scale(2.4); opacity:0; }
+}
+
+/* ---------- HEADER ---------- */
+.eg-header{
+  position:fixed;
+  top:0; left:0; right:0;
+  z-index:500;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:20px 32px;
+  background:linear-gradient(to bottom, rgba(5,5,5,0.85), transparent);
+  backdrop-filter:blur(4px);
+}
+.eg-logo{
+  font-family:var(--font-display);
+  font-size:1.3rem;
+  letter-spacing:0.04em;
+}
+.eg-logo span{ color:var(--red); }
+.eg-nav{ display:flex; gap:36px; }
+.eg-nav a{
+  font-size:0.78rem;
+  letter-spacing:0.12em;
+  text-transform:uppercase;
+  font-weight:600;
+  color:var(--white-soft);
+  transition:color 0.2s;
+}
+.eg-nav a:hover{ color:var(--white); }
+.eg-header__actions{ display:flex; align-items:center; gap:14px; }
+.eg-icon-btn{
+  background:none; border:none; color:var(--white);
+  font-size:1.05rem; position:relative;
+}
+.eg-cart-count{
+  position:absolute; top:-6px; right:-10px;
+  background:var(--red); color:var(--white);
+  font-size:0.62rem; font-weight:700;
+  border-radius:50%; width:16px; height:16px;
+  display:flex; align-items:center; justify-content:center;
+}
+.eg-menu-toggle{ display:none; background:none; border:none; color:var(--white); font-size:1.4rem; }
+
+/* ---------- BUSCADOR ---------- */
+.eg-search{
+  position:fixed; top:0; left:0; right:0; z-index:600;
+  background:var(--black-soft);
+  border-bottom:1px solid var(--gray-line);
+  padding:90px 32px 32px;
+  transform:translateY(-100%);
+  transition:transform 0.4s var(--ease);
+}
+.eg-search.is-open{ transform:translateY(0); }
+#eg-search-input{
+  width:100%; max-width:var(--container); margin:0 auto; display:block;
+  background:none; border:none; border-bottom:1px solid var(--gray-line);
+  color:var(--white); font-size:1.6rem; font-family:var(--font-display);
+  padding:12px 0;
+}
+#eg-search-input:focus{ outline:none; border-color:var(--red); }
+.eg-search__results{ max-width:var(--container); margin:16px auto 0; }
+.eg-search__results .eg-search-item{
+  padding:10px 0; border-bottom:1px solid var(--gray-line);
+  display:flex; justify-content:space-between; font-size:0.9rem;
+}
+
+/* ---------- HERO ---------- */
+.eg-hero{
+  position:relative;
+  height:100vh;
+  min-height:640px;
+  display:flex;
+  align-items:flex-end;
+  padding:0 0 100px;
+  overflow:hidden;
+  background:
+    radial-gradient(ellipse 60% 55% at 78% 42%, rgba(255,0,0,0.16), transparent 70%),
+    radial-gradient(ellipse 90% 70% at 15% 100%, rgba(255,0,0,0.08), transparent 60%),
+    linear-gradient(160deg, #0a0a0a 0%, var(--black) 55%, #030303 100%);
+}
+/* Textura de asfalto/grano muy sutil */
+.eg-hero::before{
+  content:'';
+  position:absolute; inset:0;
+  background-image:
+    radial-gradient(rgba(255,255,255,0.035) 1px, transparent 1px);
+  background-size:3px 3px;
+  opacity:0.5;
+  pointer-events:none;
+}
+/* Salpicaduras / graffiti drips sutiles en las esquinas */
+.eg-hero__graffiti{
+  position:absolute; inset:0; z-index:1; pointer-events:none;
+  opacity:0.9;
+}
+.eg-hero__moto-wrap{
+  position:absolute;
+  right:-4%;
+  bottom:0;
+  width:min(58vw, 880px);
+  height:82%;
+  z-index:1;
+  animation:eg-moto-float 7s ease-in-out infinite;
+  -webkit-mask-image:linear-gradient(to top, transparent 0%, black 14%, black 88%, transparent 100%),
+                      linear-gradient(to left, transparent 0%, black 10%);
+  -webkit-mask-composite:source-in;
+  mask-image:linear-gradient(to top, transparent 0%, black 14%, black 88%, transparent 100%),
+             linear-gradient(to left, transparent 0%, black 10%);
+  mask-composite:intersect;
+}
+@keyframes eg-moto-float{
+  0%,100%{ transform:translateY(0px); }
+  50%{ transform:translateY(-8px); }
+}
+.eg-hero__moto{
+  width:100%; height:100%;
+  object-fit:contain;
+  object-position:bottom right;
+  /* Duotono negro/rojo + contraste, look cinematográfico */
+  filter:grayscale(1) contrast(1.25) brightness(0.85) drop-shadow(0 30px 50px rgba(0,0,0,0.75));
+}
+/* Capa de tinte rojo sobre la foto (duotono real vía blend) */
+.eg-hero__moto-wrap::after{
+  content:'';
+  position:absolute; inset:0;
+  background:linear-gradient(200deg, rgba(255,0,0,0.32), rgba(0,0,0,0) 55%),
+             linear-gradient(0deg, rgba(255,0,0,0.12), transparent 40%);
+  mix-blend-mode:color;
+  pointer-events:none;
+}
+/* Estado sin foto todavía: silueta guía discreta en vez de icono roto */
+.eg-hero__moto-wrap--empty{
+  background:radial-gradient(ellipse at 65% 75%, rgba(255,0,0,0.08), transparent 60%);
+}
+.eg-hero__moto-wrap--empty .eg-hero__moto{ opacity:0; }
+.eg-hero__moto-wrap--empty::before{
+  content:'Agrega tu foto en assets/images/hero-moto.jpg';
+  position:absolute; bottom:12%; right:4%;
+  font-family:var(--font-body); font-size:0.72rem; letter-spacing:0.04em;
+  color:rgba(255,255,255,0.35);
+  border:1px dashed rgba(255,255,255,0.2);
+  padding:10px 16px; border-radius:6px;
+}
+.eg-hero__moto-glow{
+  position:absolute;
+  right:8%;
+  bottom:14%;
+  width:38vw;
+  max-width:560px;
+  aspect-ratio:1/1;
+  border-radius:50%;
+  background:radial-gradient(circle, rgba(255,0,0,0.35) 0%, rgba(255,0,0,0.08) 55%, transparent 75%);
+  filter:blur(20px);
+  z-index:0;
+  animation:eg-glow-pulse 4.5s ease-in-out infinite;
+}
+@keyframes eg-glow-pulse{
+  0%,100%{ opacity:0.7; transform:scale(1); }
+  50%{ opacity:1; transform:scale(1.08); }
+}
+.eg-hero__smoke{
+  position:absolute; right:4%; bottom:8%; width:34vw; max-width:480px; height:220px;
+  background:radial-gradient(ellipse at center, rgba(255,255,255,0.10), transparent 70%);
+  filter:blur(18px);
+  z-index:1;
+  animation:eg-smoke-drift 9s ease-in-out infinite;
+  pointer-events:none;
+}
+@keyframes eg-smoke-drift{
+  0%{ transform:translateX(0) scaleX(1); opacity:0.5; }
+  50%{ transform:translateX(-20px) scaleX(1.15); opacity:0.8; }
+  100%{ transform:translateX(0) scaleX(1); opacity:0.5; }
+}
+.eg-hero__overlay{
+  position:absolute; inset:0; z-index:1;
+  background:linear-gradient(to top, var(--black) 8%, rgba(5,5,5,0.25) 45%, rgba(5,5,5,0.15) 65%, rgba(5,5,5,0.4) 100%),
+             linear-gradient(90deg, rgba(5,5,5,0.75) 0%, rgba(5,5,5,0.15) 48%, rgba(5,5,5,0.05) 100%);
+}
+.eg-hero__content{ position:relative; z-index:2; padding:0 48px; max-width:900px; }
+.eg-hero__title{
+  font-size:clamp(3.1rem, 9vw, 7.2rem);
+  line-height:0.9;
+  color:var(--white);
+  text-shadow:0 4px 40px rgba(0,0,0,0.5);
+}
+.eg-hero__title .eg-hero__accent{
+  color:var(--red);
+  text-shadow:0 0 24px rgba(255,0,0,0.55), 0 0 60px rgba(255,0,0,0.25);
+}
+.eg-hero__subtitle{
+  color:var(--white-soft);
+  font-size:1.1rem;
+  max-width:480px;
+  margin:24px 0 36px;
+  line-height:1.6;
+}
+.eg-hero__actions{ display:flex; gap:16px; flex-wrap:wrap; }
+
+@media (max-width:960px){
+  .eg-hero__moto-wrap{ width:88vw; right:-6%; height:70%; opacity:0.5; }
+  .eg-hero__moto-glow{ right:-4%; }
+  .eg-hero__overlay{ background:linear-gradient(to top, var(--black) 25%, rgba(5,5,5,0.4) 55%, rgba(5,5,5,0.55) 100%); }
+}
+
+/* Estado inicial oculto de los elementos del hero: los revela
+   heroReveal() (en script.js) con fade + blur + slide cuando la
+   intro termina (evento eg:introComplete). */
+.eg-hero__eyebrow, .eg-hero__title, .eg-hero__subtitle, .eg-hero__actions{
+  opacity:0;
+  filter:blur(10px);
+  transform:translateY(26px);
+}
+
+.eg-scroll-indicator{
+  position:absolute; bottom:32px; left:50%; transform:translateX(-50%);
+  z-index:2; background:none; border:none;
+  width:26px; height:42px; border:1.5px solid rgba(255,255,255,0.5);
+  border-radius:14px;
+}
+.eg-scroll-indicator span{
+  display:block; width:4px; height:8px; margin:6px auto 0;
+  background:var(--white); border-radius:2px;
+  animation:eg-scroll 1.8s infinite;
+}
+@keyframes eg-scroll{
+  0%{ transform:translateY(0); opacity:1; }
+  70%{ transform:translateY(14px); opacity:0; }
+  100%{ opacity:0; }
+}
+
+/* ---------- STATS ---------- */
+.eg-stats{
+  display:grid;
+  grid-template-columns:repeat(4, 1fr);
+  gap:24px;
+  padding:80px 24px;
+  background:var(--black-soft);
+  border-top:1px solid var(--gray-line);
+  border-bottom:1px solid var(--gray-line);
+}
+.eg-stat{ text-align:center; }
+.eg-stat__number{
+  font-family:var(--font-display);
+  font-size:clamp(2.2rem, 5vw, 3.6rem);
+  color:var(--red);
+  display:block;
+}
+.eg-stat__label{
+  color:var(--white-soft);
+  font-size:0.82rem;
+  letter-spacing:0.08em;
+  text-transform:uppercase;
+  margin:6px 0 0;
+}
+
+/* ---------- CATÁLOGO ---------- */
+.eg-filters{
+  max-width:var(--container); margin:0 auto 40px;
+  display:flex; flex-wrap:wrap; gap:12px; justify-content:center;
+}
+.eg-filters select{
+  background:var(--gray-dark); color:var(--white);
+  border:1px solid var(--gray-line); padding:12px 16px;
+  font-size:0.82rem; border-radius:var(--radius-sm);
+}
+.eg-grid{
+  max-width:var(--container); margin:0 auto;
+  display:grid;
+  grid-template-columns:repeat(auto-fill, minmax(270px, 1fr));
+  gap:36px;
+}
+.eg-card{
+  background:linear-gradient(165deg, rgba(30,30,30,0.75) 0%, rgba(10,10,10,0.9) 100%);
+  backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);
+  border:1px solid var(--gray-line);
+  border-radius:14px;
+  overflow:hidden;
+  transition:transform 0.4s var(--ease), border-color 0.4s var(--ease), box-shadow 0.45s var(--ease);
+  position:relative;
+  box-shadow:0 18px 34px -26px rgba(0,0,0,0.8);
+}
+.eg-card::before{
+  content:'';
+  position:absolute; inset:0; border-radius:inherit; z-index:1;
+  box-shadow:inset 0 0 0 1px rgba(255,0,0,0);
+  transition:box-shadow 0.4s var(--ease);
+  pointer-events:none;
+}
+.eg-card:hover{
+  transform:translateY(-8px);
+  border-color:var(--red);
+  box-shadow:0 30px 60px -24px rgba(255,0,0,0.32);
+}
+.eg-card:hover::before{
+  box-shadow:inset 0 0 0 1px rgba(255,0,0,0.4), 0 0 34px rgba(255,0,0,0.12);
+}
+.eg-card__media{ aspect-ratio:4/3; overflow:hidden; background:#0a0a0a; position:relative; }
+.eg-card__media::after{
+  content:'';
+  position:absolute; inset:0;
+  background:linear-gradient(to top, rgba(5,5,5,0.55), transparent 45%);
+  pointer-events:none;
+}
+.eg-card__media img{ width:100%; height:100%; object-fit:cover; transition:transform 0.6s var(--ease); }
+.eg-card:hover .eg-card__media img{ transform:scale(1.08); }
+.eg-card__body{ padding:24px; }
+.eg-card__brand{ font-size:0.7rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--red); font-weight:700; }
+.eg-card__title{ font-family:var(--font-display); font-weight:400; font-size:1.05rem; margin:8px 0; letter-spacing:0.02em; }
+.eg-card__price{
+  display:inline-flex; align-items:center; gap:6px;
+  font-size:0.72rem; font-weight:800; letter-spacing:0.12em; text-transform:uppercase;
+}
+.eg-card__price--tbd{
+  color:var(--red);
+  padding:5px 10px;
+  border:1px solid rgba(255,0,0,0.4);
+  border-radius:3px;
+  background:rgba(255,0,0,0.06);
+}
+.eg-card__stock{ font-size:0.75rem; color:var(--white-soft); margin:10px 0 16px; }
+.eg-card__actions{ display:flex; gap:10px; }
+.eg-card__fav{
+  position:absolute; top:14px; right:14px; z-index:2;
+  background:rgba(5,5,5,0.6); border:1px solid rgba(255,255,255,0.12); color:var(--white);
+  width:34px; height:34px; border-radius:50%;
+  transition:border-color 0.25s var(--ease), color 0.25s var(--ease), transform 0.25s var(--ease);
+}
+.eg-card__fav:hover{ border-color:var(--red); color:var(--red); transform:scale(1.08); }
+.eg-card--skeleton{ min-height:340px; background:linear-gradient(110deg, #141414 30%, #1e1e1e 50%, #141414 70%); background-size:200% 100%; animation:eg-shimmer 1.4s infinite; }
+@keyframes eg-shimmer{ to{ background-position-x:-200%; } }
+
+/* ---------- GALERÍA PREMIUM (contenedores vacíos, listos para tus fotos) ---------- */
+.eg-gallery__grid{
+  max-width:var(--container); margin:0 auto;
+  display:grid;
+  grid-template-columns:repeat(auto-fill, minmax(260px, 1fr));
+  gap:22px;
+}
+.eg-gallery-item{
+  position:relative;
+  aspect-ratio:4/5;
+  border-radius:16px;
+  overflow:hidden;
+  background:linear-gradient(160deg, #121212 0%, #0a0a0a 60%, #050505 100%);
+  border:1px solid rgba(255,255,255,0.08);
+  box-shadow:0 20px 40px -24px rgba(0,0,0,0.7);
+  display:flex; align-items:center; justify-content:center;
+  transition:transform 0.5s var(--ease), border-color 0.4s var(--ease), box-shadow 0.5s var(--ease);
+}
+/* leve reflejo/glass sobre el placeholder */
+.eg-gallery-item::before{
+  content:'';
+  position:absolute; inset:0;
+  background:linear-gradient(115deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0) 30%);
+  pointer-events:none;
+}
+/* borde luminoso que aparece en hover */
+.eg-gallery-item::after{
+  content:'';
+  position:absolute; inset:0; border-radius:inherit;
+  box-shadow:inset 0 0 0 1px rgba(255,0,0,0);
+  transition:box-shadow 0.4s var(--ease);
+  pointer-events:none;
+}
+.eg-gallery-item:hover{
+  transform:translateY(-6px) scale(1.015);
+  border-color:rgba(255,0,0,0.35);
+  box-shadow:0 26px 54px -20px rgba(255,0,0,0.28);
+}
+.eg-gallery-item:hover::after{
+  box-shadow:inset 0 0 0 1px rgba(255,0,0,0.35), 0 0 30px rgba(255,0,0,0.12);
+}
+.eg-gallery-item img{
+  position:absolute; inset:0; width:100%; height:100%; object-fit:cover;
+  opacity:0; transition:opacity 0.5s var(--ease), transform 0.6s var(--ease);
+}
+.eg-gallery-item img[src]{ opacity:1; } /* cuando agregues una foto real, aparece automáticamente */
+.eg-gallery-item:hover img[src]{ transform:scale(1.06); }
+.eg-gallery-item__icon{
+  position:relative; z-index:1;
+  width:38px; height:38px;
+  color:rgba(255,255,255,0.22);
+  transition:color 0.4s var(--ease), transform 0.4s var(--ease);
+}
+.eg-gallery-item:hover .eg-gallery-item__icon{
+  color:rgba(255,0,0,0.55);
+  transform:scale(1.08);
+}
+
+/* ---------- NOSOTROS ---------- */
+.eg-about{
+  display:grid; grid-template-columns:1fr 1fr; gap:60px;
+  max-width:var(--container); margin:0 auto; align-items:center;
+}
+.eg-about__media img{ border-radius:var(--radius-md); }
+.eg-about__content p{ color:var(--white-soft); }
+.eg-about__list{
+  display:grid; grid-template-columns:1fr 1fr; gap:10px 20px;
+  list-style:none; padding:0; margin:24px 0 0; font-size:0.9rem;
+}
+.eg-about__list li::before{ content:"— "; color:var(--red); }
+
+/* ---------- RESEÑAS ---------- */
+.eg-reviews__track{
+  display:flex; gap:24px; overflow-x:auto; scroll-snap-type:x mandatory;
+  max-width:var(--container); margin:0 auto; padding-bottom:12px;
+}
+.eg-review-card{
+  scroll-snap-align:start; min-width:300px; max-width:340px;
+  background:var(--gray-dark); border:1px solid var(--gray-line);
+  border-radius:var(--radius-md); padding:26px;
+}
+.eg-review-card__stars{ color:var(--red); letter-spacing:2px; margin-bottom:10px; }
+.eg-review-card__name{ font-weight:700; margin-top:14px; }
+
+/* ---------- CONTACTO ---------- */
+.eg-contact{
+  display:grid; grid-template-columns:0.85fr 1.15fr; gap:60px;
+  max-width:var(--container); margin:0 auto;
+}
+.eg-form{ display:flex; flex-direction:column; gap:18px; margin-top:24px; }
+.eg-form label{ display:flex; flex-direction:column; gap:8px; font-size:0.82rem; color:var(--white-soft); }
+.eg-form input, .eg-form textarea{
+  background:var(--gray-dark); border:1px solid var(--gray-line); color:var(--white);
+  padding:12px 14px; border-radius:var(--radius-sm); font-family:inherit; font-size:0.92rem;
+}
+.eg-form input:focus, .eg-form textarea:focus{ outline:none; border-color:var(--red); }
+.eg-form__status{ font-size:0.82rem; color:var(--white-soft); min-height:1.2em; }
+
+/* ---------- UBICACIÓN: PALOS VERDE ---------- */
+.eg-location__title{
+  font-size:clamp(1.8rem, 3.2vw, 2.4rem);
+  margin:10px 0 16px;
+  text-shadow:0 0 20px rgba(255,0,0,0.2);
+}
+.eg-location__list{
+  list-style:none; margin:0 0 14px; padding:0;
+  display:flex; flex-wrap:wrap; gap:12px 24px;
+  font-weight:700; letter-spacing:0.04em; font-size:0.98rem;
+}
+.eg-location__address{
+  color:var(--white-soft); font-size:0.92rem; margin:0 0 6px;
+}
+
+.eg-contact__details{ list-style:none; padding:0; margin:20px 0 26px; display:flex; flex-direction:column; gap:10px; font-size:0.92rem; }
+.eg-contact__details a{ color:var(--white); text-decoration:underline; text-underline-offset:3px; }
+
+.eg-contact__map{
+  position:relative;
+  border-radius:var(--radius-md);
+  overflow:hidden;
+  border:1px solid var(--gray-line);
+  box-shadow:0 24px 50px -26px rgba(0,0,0,0.85), 0 0 0 1px rgba(255,0,0,0.06);
+  transition:border-color 0.35s var(--ease), box-shadow 0.35s var(--ease);
+}
+.eg-contact__map:hover{
+  border-color:rgba(255,0,0,0.4);
+  box-shadow:0 30px 60px -22px rgba(255,0,0,0.22), 0 0 0 1px rgba(255,0,0,0.1);
+}
+.eg-contact__map-label{
+  position:absolute; top:14px; left:14px; z-index:2;
+  background:rgba(5,5,5,0.72);
+  backdrop-filter:blur(4px);
+  border:1px solid rgba(255,0,0,0.3);
+  color:var(--white);
+  font-size:0.72rem; letter-spacing:0.08em; font-weight:700;
+  padding:8px 14px; border-radius:30px;
+}
+.eg-contact__map iframe{ width:100%; height:420px; border:0; display:block; filter:grayscale(0.15) contrast(1.05); }
+
+/* ---------- LIGHTBOX DE GALERÍA ---------- */
+.eg-lightbox{
+  position:fixed; inset:0; z-index:1000;
+  background:rgba(5,5,5,0.94);
+  display:flex; align-items:center; justify-content:center;
+  opacity:0; pointer-events:none; transition:opacity 0.3s var(--ease);
+}
+.eg-lightbox.is-open{ opacity:1; pointer-events:auto; }
+.eg-lightbox__img{
+  max-width:88vw; max-height:84vh; border-radius:var(--radius-sm);
+  box-shadow:0 20px 60px rgba(0,0,0,0.6);
+}
+.eg-lightbox__close, .eg-lightbox__prev, .eg-lightbox__next{
+  position:absolute; background:rgba(255,255,255,0.08); border:1px solid var(--gray-line);
+  color:var(--white); border-radius:50%; width:44px; height:44px; font-size:1.2rem;
+  transition:background 0.2s, border-color 0.2s;
+}
+.eg-lightbox__close{ top:24px; right:24px; }
+.eg-lightbox__prev{ left:24px; top:50%; transform:translateY(-50%); }
+.eg-lightbox__next{ right:24px; top:50%; transform:translateY(-50%); }
+.eg-lightbox__close:hover, .eg-lightbox__prev:hover, .eg-lightbox__next:hover{
+  background:var(--red); border-color:var(--red);
+}
+
+/* ---------- WHATSAPP FLOTANTE ---------- */
+.eg-whatsapp-float{
+  position:fixed; bottom:24px; right:24px; z-index:400;
+  background:#25D366; color:#04250f; padding:14px 20px;
+  border-radius:50px; font-weight:700; font-size:0.85rem;
+  box-shadow:0 8px 24px rgba(0,0,0,0.4);
+}
+
+/* ---------- FOOTER ---------- */
+.eg-footer{ padding:60px 32px 30px; border-top:1px solid var(--gray-line); }
+.eg-footer__top{
+  display:flex; justify-content:space-between; align-items:center;
+  max-width:var(--container); margin:0 auto 30px; flex-wrap:wrap; gap:16px;
+}
+.eg-footer__social{ display:flex; gap:20px; font-size:0.85rem; }
+.eg-footer__links{
+  display:flex; gap:24px; max-width:var(--container); margin:0 auto 20px;
+  font-size:0.82rem; color:var(--white-soft);
+}
+.eg-footer__copy{
+  max-width:var(--container); margin:0 auto; font-size:0.78rem; color:rgba(255,255,255,0.4);
+}
+
+/* ---------- CARRITO LATERAL ---------- */
+.eg-cart{
+  position:fixed; top:0; right:0; height:100vh; width:min(420px, 90vw);
+  background:var(--black-soft); border-left:1px solid var(--gray-line);
+  z-index:900; transform:translateX(100%); transition:transform 0.4s var(--ease);
+  display:flex; flex-direction:column;
+}
+.eg-cart.is-open{ transform:translateX(0); }
+.eg-cart__head{ display:flex; justify-content:space-between; align-items:center; padding:22px; border-bottom:1px solid var(--gray-line); }
+.eg-cart__head button{ background:none; border:none; color:var(--white); font-size:1.2rem; }
+.eg-cart__items{ flex:1; overflow-y:auto; padding:16px 22px; }
+.eg-cart__footer{ padding:22px; border-top:1px solid var(--gray-line); }
+.eg-cart__row{ display:flex; justify-content:space-between; margin-bottom:8px; font-size:0.9rem; color:var(--white-soft); }
+.eg-cart__row--total{ color:var(--white); font-weight:800; font-size:1.1rem; }
+.eg-cart__backdrop{
+  position:fixed; inset:0; background:rgba(0,0,0,0.6); z-index:850;
+  opacity:0; pointer-events:none; transition:opacity 0.3s;
+}
+.eg-cart__backdrop.is-open{ opacity:1; pointer-events:auto; }
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width:960px){
+  .eg-nav{ display:none; }
+  .eg-menu-toggle{ display:block; }
+  .eg-stats{ grid-template-columns:repeat(2, 1fr); }
+  .eg-about, .eg-contact{ grid-template-columns:1fr; }
+  .eg-gallery__grid{ grid-template-columns:repeat(auto-fill, minmax(200px, 1fr)); }
+}
+@media (max-width:520px){
+  section{ padding:80px 18px; }
+  .eg-hero__actions{ flex-direction:column; align-items:flex-start; }
+  .eg-stats{ grid-template-columns:1fr 1fr; }
+  .eg-gallery__grid{ grid-template-columns:repeat(2, 1fr); gap:14px; }
+  .eg-contact__map iframe{ height:280px; }
+}
+
+@media (prefers-reduced-motion:reduce){
+  html{ scroll-behavior:auto; }
+  .eg-scroll-indicator span{ animation:none; }
+  .eg-hero__moto-wrap{ animation:none; }
+  .eg-hero__moto-glow{ animation:none; }
+  .eg-hero__smoke{ animation:none; }
+  .eg-hero__eyebrow, .eg-hero__title, .eg-hero__subtitle, .eg-hero__actions{
+    opacity:1; filter:none; transform:none;
+  }
+}
+
+</style>
+
+<!-- Schema.org: Negocio local -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "AutoPartsStore",
+  "name": "EDWIN GRAPHICS",
+  "image": "https://www.edwingraphics.com/assets/images/og-cover.jpg",
+  "description": "Diseño, fabricación e instalación de calcomanías premium para motocicletas.",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Palos Verde",
+    "addressLocality": "Restrepo",
+    "addressRegion": "Meta",
+    "addressCountry": "CO"
+  },
+  "telephone": "+573222493522",
+  "sameAs": ["https://instagram.com/Edwin_Graphics"],
+  "priceRange": "$$"
+}
+</script>
+</head>
+<body>
+
+<!-- =========================================================
+     INTRO PREMIUM (2s aprox.) — sin motos, sin audio.
+     Orquestada por GSAP en el script INTRO.JS al final.
+     ========================================================= -->
+<div id="eg-loader" aria-hidden="true">
+  <div class="eg-loader__glow"></div>
+  <div class="eg-loader__line"></div>
+
+  <span class="eg-loader__particle" style="left:38%; top:34%;"></span>
+  <span class="eg-loader__particle" style="left:62%; top:40%;"></span>
+  <span class="eg-loader__particle" style="left:45%; top:60%;"></span>
+  <span class="eg-loader__particle" style="left:58%; top:64%;"></span>
+  <span class="eg-loader__particle" style="left:50%; top:28%;"></span>
+  <span class="eg-loader__particle" style="left:33%; top:52%;"></span>
+  <span class="eg-loader__particle" style="left:66%; top:56%;"></span>
+
+  <div class="eg-loader__mark">
+    <p class="eg-loader__logo">EDWIN<span>GRAPHICS</span></p>
+    <p class="eg-loader__tag">Diseño Gráfico Premium Para Motos</p>
+  </div>
+</div>
+<div class="eg-loader__flash"></div>
+
+<!-- =========================================================
+     HEADER / NAV
+     ========================================================= -->
+<header class="eg-header" id="eg-header">
+  <a href="#inicio" class="eg-logo">EDWIN<span>GRAPHICS</span></a>
+  <nav class="eg-nav" aria-label="Navegación principal">
+    <a href="#catalogo">Catálogo</a>
+    <a href="#galeria">Galería</a>
+    <a href="#nosotros">Nosotros</a>
+    <a href="#resenas">Reseñas</a>
+    <a href="#contacto">Contacto</a>
+  </nav>
+  <div class="eg-header__actions">
+    <button class="eg-icon-btn" id="eg-search-toggle" aria-label="Buscar">🔍</button>
+    <button class="eg-icon-btn" id="eg-fav-toggle" aria-label="Favoritos">♡</button>
+    <button class="eg-icon-btn" id="eg-cart-toggle" aria-label="Carrito">
+      🛒 <span class="eg-cart-count" id="eg-cart-count">0</span>
+    </button>
+  </div>
+  <button class="eg-menu-toggle" id="eg-menu-toggle" aria-label="Menú">☰</button>
+</header>
+
+<!-- Buscador desplegable -->
+<div class="eg-search" id="eg-search">
+  <input type="text" id="eg-search-input" placeholder="Buscar por pieza, diseño o referencia…" autocomplete="off">
+  <div class="eg-search__results" id="eg-search-results"></div>
+</div>
+
+<!-- =========================================================
+     HERO
+     ========================================================= -->
+<section class="eg-hero" id="inicio">
+
+  <!-- Salpicaduras de graffiti / pintura, decorativas -->
+  <svg class="eg-hero__graffiti" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <defs>
+      <radialGradient id="dripRed" cx="50%" cy="30%" r="70%">
+        <stop offset="0%" stop-color="#ff0000" stop-opacity="0.55"/>
+        <stop offset="100%" stop-color="#ff0000" stop-opacity="0"/>
+      </radialGradient>
+    </defs>
+    <circle cx="120" cy="120" r="180" fill="url(#dripRed)"/>
+    <circle cx="1500" cy="780" r="220" fill="url(#dripRed)"/>
+    <path d="M60 40 q10 60 -5 110 q-8 26 8 30 q14 3 10 -24" stroke="#ff0000" stroke-opacity="0.35" stroke-width="6" fill="none" stroke-linecap="round"/>
+    <path d="M1510 60 q-6 50 14 84" stroke="#ff0000" stroke-opacity="0.3" stroke-width="5" fill="none" stroke-linecap="round"/>
+    <circle cx="90" cy="230" r="4" fill="#ff0000" fill-opacity="0.45"/>
+    <circle cx="110" cy="250" r="2.5" fill="#ff0000" fill-opacity="0.4"/>
+  </svg>
+
+  <!-- =========================================================
+       MOTOCICLETA REAL — elemento visual del hero.
+       Reemplaza "assets/images/hero-moto.jpg" por tu propia
+       fotografía con licencia (sin logos/marcas visibles si quieres
+       mantener la identidad neutral de EDWIN GRAPHICS). El
+       tratamiento visual (duotono negro/rojo, viñeta, glow) ya
+       está aplicado por CSS a la imagen mediante .eg-hero__moto-wrap.
+       Medida recomendada: foto de perfil o 3/4, fondo oscuro/estudio,
+       mínimo 1600px de ancho, formato .jpg o .webp.
+       ========================================================= -->
+  <div class="eg-hero__moto-glow"></div>
+  <div class="eg-hero__smoke"></div>
+  <div class="eg-hero__moto-wrap">
+    <img class="eg-hero__moto"
+         src="assets/images/hero-moto.jpg"
+         alt="Motocicleta deportiva negra y roja — EDWIN GRAPHICS"
+         loading="eager"
+         onerror="this.closest('.eg-hero__moto-wrap').classList.add('eg-hero__moto-wrap--empty')">
+  </div>
+
+  <div class="eg-hero__overlay"></div>
+  <div class="eg-hero__content">
+    <p class="eg-eyebrow eg-hero__eyebrow">Palos Verde · Restrepo, Meta — Colombia</p>
+    <h1 class="eg-hero__title">TU MOTO.<br>TU <span class="eg-hero__accent">IDENTIDAD</span>.</h1>
+    <p class="eg-hero__subtitle">Calcomanías premium diseñadas, fabricadas e instaladas a la medida de cada motocicleta. Estilo urbano, acabado de fábrica.</p>
+    <div class="eg-hero__actions">
+      <a href="#catalogo" class="eg-btn eg-btn--primary">Ver Catálogo</a>
+      <a href="#catalogo" class="eg-btn eg-btn--outline">Comprar Ahora</a>
+      <a href="https://wa.me/573222493522" target="_blank" rel="noopener" class="eg-btn eg-btn--whatsapp">WhatsApp</a>
+    </div>
+  </div>
+  <button class="eg-scroll-indicator" id="eg-scroll-indicator" aria-label="Desplazarse hacia abajo">
+    <span></span>
+  </button>
+</section>
+
+<!-- =========================================================
+     ESTADÍSTICAS
+     ========================================================= -->
+<section class="eg-stats" id="estadisticas">
+  <div class="eg-stat">
+    <span class="eg-stat__number" data-count="1">0</span>
+    <p class="eg-stat__label">Año de experiencia</p>
+  </div>
+  <div class="eg-stat">
+    <span class="eg-stat__number" data-count="3400" data-prefix="+">0</span>
+    <p class="eg-stat__label">Motos personalizadas</p>
+  </div>
+  <div class="eg-stat">
+    <span class="eg-stat__number" data-count="24">0</span>
+    <p class="eg-stat__label">Diseños exclusivos</p>
+  </div>
+  <div class="eg-stat">
+    <span class="eg-stat__number" data-count="100" data-suffix="%">0</span>
+    <p class="eg-stat__label">Vinilo premium</p>
+  </div>
+</section>
+
+<!-- =========================================================
+     CATÁLOGO
+     ========================================================= -->
+<section class="eg-catalog" id="catalogo">
+  <div class="eg-section-head">
+    <p class="eg-eyebrow">Catálogo</p>
+    <h2>Kits y diseños disponibles</h2>
+  </div>
+
+  <div class="eg-filters" id="eg-filters">
+    <select id="filter-piece" aria-label="Filtrar por pieza">
+      <option value="">Pieza</option>
+    </select>
+    <select id="filter-design" aria-label="Filtrar por diseño">
+      <option value="">Diseño</option>
+    </select>
+    <button id="filter-reset" class="eg-btn eg-btn--ghost">Limpiar filtros</button>
+  </div>
+
+  <div class="eg-grid" id="eg-product-grid">
+    <!-- Las tarjetas de producto se generan dinámicamente desde
+         Shopify (ver shopify.js). Se muestra un esqueleto mientras carga. -->
+    <div class="eg-card eg-card--skeleton"></div>
+    <div class="eg-card eg-card--skeleton"></div>
+    <div class="eg-card eg-card--skeleton"></div>
+    <div class="eg-card eg-card--skeleton"></div>
+  </div>
+</section>
+
+<!-- =========================================================
+     GALERÍA PREMIUM
+     Fotos reales del trabajo. Para agregar más en el futuro,
+     copia el bloque de un .eg-gallery-item y cambia la imagen
+     (o usa la función addGalleryPhoto(indice, url) en script.js
+     para un contenedor vacío nuevo).
+     ========================================================= -->
+<section class="eg-gallery" id="galeria">
+  <div class="eg-section-head">
+    <p class="eg-eyebrow">Nuestro trabajo</p>
+    <h2>Galería Premium</h2>
+  </div>
+  <div class="eg-gallery__grid" id="eg-gallery-grid">
+    <div class="eg-gallery-item">
+      <img src="assets/images/gallery/trabajo-1.jpg" alt="Trabajo realizado 1 — EDWIN GRAPHICS" loading="lazy">
+    </div>
+    <div class="eg-gallery-item">
+      <img src="assets/images/gallery/trabajo-2.jpg" alt="Trabajo realizado 2 — EDWIN GRAPHICS" loading="lazy">
+    </div>
+    <div class="eg-gallery-item">
+      <img src="assets/images/gallery/trabajo-3.jpg" alt="Trabajo realizado 3 — EDWIN GRAPHICS" loading="lazy">
+    </div>
+    <div class="eg-gallery-item">
+      <img src="assets/images/gallery/trabajo-4.jpg" alt="Trabajo realizado 4 — EDWIN GRAPHICS" loading="lazy">
+    </div>
+    <div class="eg-gallery-item">
+      <img src="assets/images/gallery/trabajo-5.jpg" alt="Trabajo realizado 5 — EDWIN GRAPHICS" loading="lazy">
+    </div>
+    <div class="eg-gallery-item">
+      <img src="assets/images/gallery/trabajo-6.jpg" alt="Trabajo realizado 6 — EDWIN GRAPHICS" loading="lazy">
+    </div>
+    <div class="eg-gallery-item">
+      <img src="assets/images/gallery/trabajo-7.jpg" alt="Trabajo realizado 7 — EDWIN GRAPHICS" loading="lazy">
+    </div>
+    <div class="eg-gallery-item">
+      <img src="assets/images/gallery/trabajo-8.jpg" alt="Trabajo realizado 8 — EDWIN GRAPHICS" loading="lazy">
+    </div>
+    <div class="eg-gallery-item">
+      <img src="assets/images/gallery/trabajo-9.jpg" alt="Trabajo realizado 9 — EDWIN GRAPHICS" loading="lazy">
+    </div>
+    <div class="eg-gallery-item">
+      <img src="assets/images/gallery/trabajo-10.jpg" alt="Trabajo realizado 10 — EDWIN GRAPHICS" loading="lazy">
+    </div>
+    <div class="eg-gallery-item">
+      <img src="assets/images/gallery/trabajo-11.jpg" alt="Trabajo realizado 11 — EDWIN GRAPHICS" loading="lazy">
+    </div>
+    <div class="eg-gallery-item">
+      <img src="assets/images/gallery/trabajo-12.jpg" alt="Trabajo realizado 12 — EDWIN GRAPHICS" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     NOSOTROS
+     ========================================================= -->
+<section class="eg-about" id="nosotros">
+  <div class="eg-about__media">
+    <img src="assets/images/taller.jpg" alt="Taller EDWIN GRAPHICS en Restrepo, Meta" loading="lazy">
+  </div>
+  <div class="eg-about__content">
+    <p class="eg-eyebrow">Nuestra historia</p>
+    <h2>Precisión artesanal, acabado de fábrica</h2>
+    <p>En EDWIN GRAPHICS diseñamos, fabricamos e instalamos calcomanías premium para motocicletas en Palos Verde, Restrepo, Meta. Cada pieza se piensa a la medida de la moto, el color y la personalidad de quien la conduce.</p>
+    <ul class="eg-about__list">
+      <li>Calcomanías personalizadas</li>
+      <li>Kits completos</li>
+      <li>Diseños deportivos</li>
+      <li>Stickers personalizados</li>
+      <li>Logos</li>
+      <li>Restauración de calcomanías</li>
+      <li>Diseño exclusivo por pedido</li>
+      <li>Instalación profesional</li>
+    </ul>
+  </div>
+</section>
+
+<!-- =========================================================
+     RESEÑAS
+     ========================================================= -->
+<section class="eg-reviews" id="resenas">
+  <div class="eg-section-head">
+    <p class="eg-eyebrow">Reseñas</p>
+    <h2>Lo que dicen nuestros clientes</h2>
+  </div>
+  <div class="eg-reviews__track" id="eg-reviews-track">
+    <!-- Generado dinámicamente desde script.js (REVIEWS[]) -->
+  </div>
+</section>
+
+<!-- =========================================================
+     CONTACTO
+     ========================================================= -->
+<section class="eg-contact" id="contacto">
+  <div class="eg-contact__form-wrap">
+    <p class="eg-eyebrow">Contacto</p>
+    <h2>Cuéntanos tu proyecto</h2>
+    <form class="eg-form" id="eg-contact-form" novalidate>
+      <label>
+        Nombre
+        <input type="text" name="nombre" required>
+      </label>
+      <label>
+        Correo electrónico
+        <input type="email" name="correo" required>
+      </label>
+      <label>
+        Teléfono
+        <input type="tel" name="telefono">
+      </label>
+      <label>
+        Mensaje
+        <textarea name="mensaje" rows="4" required></textarea>
+      </label>
+      <button type="submit" class="eg-btn eg-btn--primary">Enviar mensaje</button>
+      <p class="eg-form__status" id="eg-form-status" role="status"></p>
+    </form>
+  </div>
+  <div class="eg-contact__info">
+    <p class="eg-eyebrow">Ubicación</p>
+    <h3 class="eg-location__title">PALOS VERDE</h3>
+    <ul class="eg-location__list">
+      <li>📍 LOCAL 1</li>
+      <li>📍 LOCAL 2</li>
+    </ul>
+    <p class="eg-location__address">Restrepo, Meta — Colombia</p>
+
+    <ul class="eg-contact__details">
+      <li><strong>WhatsApp:</strong> <a href="https://wa.me/573222493522">+57 322 249 3522</a></li>
+      <li><strong>Instagram:</strong> <a href="https://instagram.com/Edwin_Graphics" target="_blank" rel="noopener">@Edwin_Graphics</a></li>
+      <li><strong>Horario:</strong> Lunes a sábado, 8:00 a.m. – 6:00 p.m.</li>
+    </ul>
+
+    <!-- Street View / Google Maps de la zona de Palos Verde.
+         Contenedor responsive listo: cuando tengas el enlace real de
+         Google Maps Street View de Palos Verde, reemplaza el "src" del
+         iframe. No se usa ninguna API Key. -->
+    <div class="eg-contact__map">
+      <span class="eg-contact__map-label">📍 Palos Verde — Vista del sector</span>
+      <iframe
+        title="Ubicación EDWIN GRAPHICS — Palos Verde, Restrepo, Meta"
+        src="https://www.google.com/maps?q=Restrepo,Meta,Colombia&output=embed"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+    </div>
+  </div>
+</section>
+
+<!-- Botón flotante de WhatsApp -->
+<a href="https://wa.me/573222493522" target="_blank" rel="noopener" class="eg-whatsapp-float" aria-label="Escribir por WhatsApp">
+  <span>WhatsApp</span>
+</a>
+
+<!-- =========================================================
+     FOOTER
+     ========================================================= -->
+<footer class="eg-footer">
+  <div class="eg-footer__top">
+    <a href="#inicio" class="eg-logo">EDWIN<span>GRAPHICS</span></a>
+    <div class="eg-footer__social">
+      <a href="https://instagram.com/Edwin_Graphics" target="_blank" rel="noopener">Instagram</a>
+      <a href="#" aria-disabled="true">Facebook (próximamente)</a>
+    </div>
+  </div>
+  <div class="eg-footer__links">
+    <a href="privacidad.html">Política de privacidad</a>
+    <a href="terminos.html">Términos y condiciones</a>
+  </div>
+  <p class="eg-footer__copy">© <span id="eg-year"></span> EDWIN GRAPHICS — Restrepo, Meta, Colombia. Todos los derechos reservados.</p>
+</footer>
+
+<!-- =========================================================
+     CARRITO LATERAL
+     ========================================================= -->
+<aside class="eg-cart" id="eg-cart" aria-hidden="true">
+  <div class="eg-cart__head">
+    <h3>Tu carrito</h3>
+    <button id="eg-cart-close" aria-label="Cerrar carrito">✕</button>
+  </div>
+  <div class="eg-cart__items" id="eg-cart-items"></div>
+  <div class="eg-cart__footer">
+    <div class="eg-cart__row">
+      <span>Subtotal</span>
+      <span id="eg-cart-subtotal">Por confirmar</span>
+    </div>
+    <div class="eg-cart__row eg-cart__row--total">
+      <span>Total</span>
+      <span id="eg-cart-total">Por confirmar</span>
+    </div>
+    <button class="eg-btn eg-btn--primary eg-btn--full" id="eg-checkout-btn">Ir a pagar</button>
+  </div>
+</aside>
+<div class="eg-cart__backdrop" id="eg-cart-backdrop"></div>
+
+<!-- =========================================================
+     SCRIPTS
+     ========================================================= -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+/* =========================================================
+   INTRO.JS - Orquesta la intro premium de EDWIN GRAPHICS
+   (~2 segundos). Sin motos, sin SVG de vehiculo, sin audio.
+   Solo resplandor, particulas, linea y logo. Requiere GSAP
+   (cargado arriba via CDN).
+   ========================================================= */
+(function () {
+  const loader = document.getElementById('eg-loader');
+  const flash = document.querySelector('.eg-loader__flash');
+  if (!loader) return;
+
+  const html = document.documentElement;
+
+  function finishIntro() {
+    html.classList.remove('eg-lock');
+    loader.remove();
+    if (flash) flash.remove();
+    document.dispatchEvent(new CustomEvent('eg:introComplete'));
+  }
+
+  // Si el usuario prefiere menos movimiento, se omite la intro por completo.
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    finishIntro();
+    return;
+  }
+
+  html.classList.add('eg-lock');
+
+  const glow = loader.querySelector('.eg-loader__glow');
+  const line = loader.querySelector('.eg-loader__line');
+  const particles = loader.querySelectorAll('.eg-loader__particle');
+  const logo = loader.querySelector('.eg-loader__logo');
+  const tag = loader.querySelector('.eg-loader__tag');
+
+  const tl = gsap.timeline({ onComplete: finishIntro });
+
+  tl.to(glow, { opacity: 1, scale: 1, duration: 0.5, ease: 'sine.out' })
+    .to(particles, { opacity: 0.85, y: -14, duration: 0.6, stagger: 0.04, ease: 'sine.out' }, '<0.1')
+    .to(line, { width: '42vw', opacity: 1, duration: 0.45, ease: 'power2.out' }, '<0.1')
+    .to(line, { opacity: 0, duration: 0.3 }, '>-0.05')
+    .to(logo, { opacity: 1, y: 0, duration: 0.45, ease: 'power2.out' }, '<')
+    .to(tag, { opacity: 1, y: 0, duration: 0.4, ease: 'power2.out' }, '-=0.2')
+    .to({}, { duration: 0.25 }) // breve pausa antes del cierre
+    .to(flash, { opacity: 1, duration: 0.12, ease: 'power1.in' })
+    .to(loader, { opacity: 0, duration: 0.5, ease: 'power1.out' }, '<')
+    .to(flash, { opacity: 0, duration: 0.5, ease: 'power1.out' }, '<');
+})();
+</script>
+<script>
+/* =========================================================
+   SHOPIFY.JS — Integración con Shopify Storefront API
+   Reemplaza únicamente estas dos constantes con los datos
+   reales de tu tienda:
+   ========================================================= */
+
+const SHOPIFY_STORE_DOMAIN = 'tu-tienda.myshopify.com';
+const SHOPIFY_STOREFRONT_ACCESS_TOKEN = 'TU_STOREFRONT_ACCESS_TOKEN';
+
+const SHOPIFY_API_VERSION = '2025-01';
+const SHOPIFY_ENDPOINT = `https://${SHOPIFY_STORE_DOMAIN}/api/${SHOPIFY_API_VERSION}/graphql.json`;
+
+/**
+ * Ejecuta una consulta GraphQL contra el Storefront API.
+ */
+async function shopifyFetch(query, variables = {}) {
+  try {
+    const res = await fetch(SHOPIFY_ENDPOINT, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-Shopify-Storefront-Access-Token': SHOPIFY_STOREFRONT_ACCESS_TOKEN,
+      },
+      body: JSON.stringify({ query, variables }),
+    });
+    const json = await res.json();
+    if (json.errors) {
+      console.error('Shopify Storefront API error:', json.errors);
+      return null;
+    }
+    return json.data;
+  } catch (err) {
+    console.error('Error al conectar con Shopify:', err);
+    return null;
+  }
+}
+
+/**
+ * Trae los productos publicados en la tienda (imágenes, precio,
+ * stock y variantes) listos para pintar en el catálogo.
+ */
+async function fetchShopifyProducts(first = 24) {
+  const query = `
+    query Products($first: Int!) {
+      products(first: $first) {
+        edges {
+          node {
+            id
+            title
+            handle
+            description
+            vendor
+            productType
+            availableForSale
+            tags
+            featuredImage { url altText }
+            priceRange {
+              minVariantPrice { amount currencyCode }
+            }
+            variants(first: 10) {
+              edges {
+                node {
+                  id
+                  title
+                  availableForSale
+                  quantityAvailable
+                  price { amount currencyCode }
+                  selectedOptions { name value }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  `;
+  const data = await shopifyFetch(query, { first });
+  if (!data) return [];
+
+  return data.products.edges.map(({ node }) => ({
+    id: node.id,
+    title: node.title,
+    handle: node.handle,
+    description: node.description,
+    category: node.productType, // Pieza (Guardabarro, Tanque, Laterales, Carenaje...)
+    design: node.tags?.[0] || '',
+    tags: node.tags,
+    inStock: node.availableForSale,
+    image: node.featuredImage?.url || 'assets/images/placeholder-product.jpg',
+    imageAlt: node.featuredImage?.altText || node.title,
+    priceLabel: 'POR CONFIRMAR',
+    variants: node.variants.edges.map(({ node: v }) => ({
+      id: v.id,
+      title: v.title,
+      inStock: v.availableForSale,
+      quantityAvailable: v.quantityAvailable,
+      options: v.selectedOptions,
+    })),
+  }));
+}
+
+/**
+ * Crea un carrito en Shopify (Cart API) y devuelve la URL de
+ * checkout oficial de Shopify para redirigir al cliente.
+ */
+async function createShopifyCheckout(lines) {
+  // lines: [{ merchandiseId: 'gid://shopify/ProductVariant/123', quantity: 2 }, ...]
+  const query = `
+    mutation CartCreate($lines: [CartLineInput!]!) {
+      cartCreate(input: { lines: $lines }) {
+        cart { id checkoutUrl }
+        userErrors { field message }
+      }
+    }
+  `;
+  const data = await shopifyFetch(query, { lines });
+  if (!data || data.cartCreate.userErrors.length) {
+    console.error('Error creando el checkout de Shopify:', data?.cartCreate.userErrors);
+    return null;
+  }
+  return data.cartCreate.cart.checkoutUrl;
+}
+
+/**
+ * Punto de entrada: carga los productos y los pinta en #eg-product-grid.
+ * Si Shopify aún no está configurado (dominio/token de ejemplo),
+ * se pintan productos de demostración para no dejar el catálogo vacío.
+ */
+async function initShopifyCatalog() {
+  const grid = document.getElementById('eg-product-grid');
+  if (!grid) return;
+
+  const isConfigured = !SHOPIFY_STORE_DOMAIN.includes('tu-tienda');
+  const products = isConfigured ? await fetchShopifyProducts() : demoProducts();
+
+  window.EG_PRODUCTS = products; // usado por script.js para filtros/búsqueda
+  renderProductGrid(products);
+  document.dispatchEvent(new CustomEvent('eg:productsLoaded', { detail: products }));
+}
+
+function renderProductGrid(products) {
+  const grid = document.getElementById('eg-product-grid');
+  if (!grid) return;
+
+  if (!products.length) {
+    grid.innerHTML = '<p class="eg-empty">No encontramos productos con esos filtros.</p>';
+    return;
+  }
+
+  grid.innerHTML = products.map(p => `
+    <article class="eg-card" data-id="${p.id}" data-category="${p.category}" data-design="${p.design}">
+      <button class="eg-card__fav" data-fav="${p.id}" aria-label="Agregar a favoritos">♡</button>
+      <div class="eg-card__media">
+        <img src="${p.image}" alt="${p.imageAlt}" loading="lazy">
+      </div>
+      <div class="eg-card__body">
+        <p class="eg-card__brand">${p.category}</p>
+        <h3 class="eg-card__title">${p.title}</h3>
+        <p class="eg-card__price eg-card__price--tbd">POR CONFIRMAR</p>
+        <p class="eg-card__stock">${p.inStock ? 'Disponible' : 'Agotado'}</p>
+        <div class="eg-card__actions">
+          <button class="eg-btn eg-btn--outline" data-view="${p.id}">Ver detalles</button>
+          <button class="eg-btn eg-btn--primary" data-add-cart="${p.id}" ${p.inStock ? '' : 'disabled'}>Agregar</button>
+        </div>
+      </div>
+    </article>
+  `).join('');
+}
+
+/**
+ * Productos de demostración — se muestran solo mientras
+ * SHOPIFY_STORE_DOMAIN / TOKEN sigan con los valores de ejemplo.
+ */
+function demoProducts() {
+  // Catálogo organizado únicamente por PIEZA y DISEÑO (sin marcas ni modelos de moto).
+  const pieces = ['Guardabarro', 'Tanque', 'Laterales', 'Carenaje'];
+  const designsPerPiece = 2;
+  const items = [];
+  let n = 0;
+  pieces.forEach((piece) => {
+    for (let d = 1; d <= designsPerPiece; d++) {
+      items.push({
+        id: `demo-${n}`,
+        title: `${piece.toUpperCase()} — DISEÑO ${d}`,
+        handle: `${piece.toLowerCase()}-diseno-${d}`,
+        description: `Calcomanía premium para ${piece.toLowerCase()}, diseño exclusivo ${d}.`,
+        category: piece.toUpperCase(),
+        design: `Diseño ${d}`,
+        tags: [],
+        inStock: n % 5 !== 0,
+        image: 'assets/images/placeholder-product.jpg',
+        imageAlt: `${piece} — Diseño ${d}`,
+        priceLabel: 'POR CONFIRMAR',
+        variants: [],
+      });
+      n++;
+    }
+  });
+  return items;
+}
+
+document.addEventListener('DOMContentLoaded', initShopifyCatalog);
+
+</script>
+<script>
+/* =========================================================
+   CART.JS — Carrito lateral con persistencia en LocalStorage
+   ========================================================= */
+
+const EG_CART_KEY = 'egCart';
+
+function getCart() {
+  try {
+    return JSON.parse(localStorage.getItem(EG_CART_KEY)) || [];
+  } catch {
+    return [];
+  }
+}
+
+function saveCart(cart) {
+  localStorage.setItem(EG_CART_KEY, JSON.stringify(cart));
+  renderCart();
+}
+
+function findProductById(id) {
+  return (window.EG_PRODUCTS || []).find(p => p.id === id);
+}
+
+function addToCart(productId, quantity = 1) {
+  const product = findProductById(productId);
+  if (!product) return;
+
+  const cart = getCart();
+  const existing = cart.find(item => item.id === productId);
+  if (existing) {
+    existing.quantity += quantity;
+  } else {
+    cart.push({
+      id: product.id,
+      title: product.title,
+      category: product.category,
+      image: product.image,
+      quantity,
+    });
+  }
+  saveCart(cart);
+  openCart();
+}
+
+function updateQuantity(productId, quantity) {
+  let cart = getCart();
+  if (quantity <= 0) {
+    cart = cart.filter(item => item.id !== productId);
+  } else {
+    const item = cart.find(i => i.id === productId);
+    if (item) item.quantity = quantity;
+  }
+  saveCart(cart);
+}
+
+function removeFromCart(productId) {
+  const cart = getCart().filter(item => item.id !== productId);
+  saveCart(cart);
+}
+
+function cartTotals() {
+  const cart = getCart();
+  return { count: cart.reduce((n, i) => n + i.quantity, 0) };
+}
+
+function renderCart() {
+  const itemsEl = document.getElementById('eg-cart-items');
+  const countEl = document.getElementById('eg-cart-count');
+  const subtotalEl = document.getElementById('eg-cart-subtotal');
+  const totalEl = document.getElementById('eg-cart-total');
+  if (!itemsEl) return;
+
+  const cart = getCart();
+  const { count } = cartTotals();
+
+  if (!cart.length) {
+    itemsEl.innerHTML = '<p class="eg-cart__empty">Tu carrito está vacío.</p>';
+  } else {
+    itemsEl.innerHTML = cart.map(item => `
+      <div class="eg-cart-item" data-id="${item.id}">
+        <img src="${item.image}" alt="${item.title}" width="64" height="64" style="border-radius:6px;object-fit:cover;">
+        <div class="eg-cart-item__info">
+          <p class="eg-cart-item__title">${item.title}</p>
+          <p class="eg-cart-item__brand">${item.category}</p>
+          <div class="eg-cart-item__qty">
+            <button data-qty-minus="${item.id}">−</button>
+            <span>${item.quantity}</span>
+            <button data-qty-plus="${item.id}">+</button>
+          </div>
+        </div>
+        <div class="eg-cart-item__price">
+          POR CONFIRMAR
+          <button data-remove="${item.id}" aria-label="Eliminar">✕</button>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  if (countEl) countEl.textContent = count;
+  if (subtotalEl) subtotalEl.textContent = 'Por confirmar';
+  if (totalEl) totalEl.textContent = 'Por confirmar';
+
+  if (window.gsap) {
+    gsap.from(itemsEl.querySelectorAll('.eg-cart-item'), {
+      opacity: 0, x: 24, duration: 0.35, stagger: 0.06, ease: 'power2.out',
+    });
+  }
+}
+
+function openCart() {
+  document.getElementById('eg-cart')?.classList.add('is-open');
+  document.getElementById('eg-cart-backdrop')?.classList.add('is-open');
+}
+function closeCart() {
+  document.getElementById('eg-cart')?.classList.remove('is-open');
+  document.getElementById('eg-cart-backdrop')?.classList.remove('is-open');
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  renderCart();
+
+  document.getElementById('eg-cart-toggle')?.addEventListener('click', openCart);
+  document.getElementById('eg-cart-close')?.addEventListener('click', closeCart);
+  document.getElementById('eg-cart-backdrop')?.addEventListener('click', closeCart);
+
+  // Delegación de eventos: agregar / quitar / cantidades
+  document.body.addEventListener('click', (e) => {
+    const addBtn = e.target.closest('[data-add-cart]');
+    if (addBtn) addToCart(addBtn.dataset.addCart);
+
+    const minusBtn = e.target.closest('[data-qty-minus]');
+    if (minusBtn) {
+      const id = minusBtn.dataset.qtyMinus;
+      const item = getCart().find(i => i.id === id);
+      if (item) updateQuantity(id, item.quantity - 1);
+    }
+
+    const plusBtn = e.target.closest('[data-qty-plus]');
+    if (plusBtn) {
+      const id = plusBtn.dataset.qtyPlus;
+      const item = getCart().find(i => i.id === id);
+      if (item) updateQuantity(id, item.quantity + 1);
+    }
+
+    const removeBtn = e.target.closest('[data-remove]');
+    if (removeBtn) removeFromCart(removeBtn.dataset.remove);
+  });
+
+  // Checkout: si Shopify está configurado, crea el cart real y
+  // redirige al checkout oficial; si no, se muestra un aviso.
+  document.getElementById('eg-checkout-btn')?.addEventListener('click', async () => {
+    const cart = getCart();
+    if (!cart.length) return;
+
+    if (typeof createShopifyCheckout === 'function' &&
+        typeof SHOPIFY_STORE_DOMAIN !== 'undefined' &&
+        !SHOPIFY_STORE_DOMAIN.includes('tu-tienda')) {
+      const lines = cart.map(i => ({ merchandiseId: i.id, quantity: i.quantity }));
+      const checkoutUrl = await createShopifyCheckout(lines);
+      if (checkoutUrl) {
+        window.location.href = checkoutUrl;
+        return;
+      }
+    }
+    alert('Conecta tu tienda Shopify en shopify.js para habilitar el pago (Shopify Checkout, Mercado Pago, Wompi, PayPal o Stripe).');
+  });
+});
+
+</script>
+<script>
+/* =========================================================
+   SCRIPT.JS — Interacciones generales del sitio
+   (menú, buscador, marcas, reseñas, stats, scroll reveals, formulario)
+   ========================================================= */
+
+gsap.registerPlugin(ScrollTrigger);
+
+document.getElementById('eg-year').textContent = new Date().getFullYear();
+
+/* ---------- PIEZAS: se usan para poblar el filtro del catálogo.
+   El catálogo se organiza únicamente por pieza y diseño (sin marcas ni modelos de moto). ---------- */
+const PIECES = ['GUARDABARRO', 'TANQUE', 'LATERALES', 'CARENAJE'];
+
+function populatePieceFilter() {
+  const pieceSelect = document.getElementById('filter-piece');
+  if (!pieceSelect) return;
+  pieceSelect.insertAdjacentHTML('beforeend',
+    PIECES.map(p => `<option value="${p}">${p}</option>`).join(''));
+}
+
+/* ---------- RESEÑAS ---------- */
+const REVIEWS = [
+  { name: 'Carlos R.', text: 'El kit quedó impecable, se ve más costoso de lo que pagué. Instalación muy profesional.' },
+  { name: 'Daniela M.', text: 'Hice un diseño exclusivo para mi moto y superó lo que imaginaba. Excelente atención.' },
+  { name: 'Julián T.', text: 'Restauraron las calcomanías originales de mi moto, quedó como de agencia.' },
+  { name: 'Andrea P.', text: 'Rapidez, calidad y un acabado que resiste el sol y la lluvia sin despegarse.' },
+];
+
+function renderReviews() {
+  const track = document.getElementById('eg-reviews-track');
+  if (!track) return;
+  track.innerHTML = REVIEWS.map(r => `
+    <div class="eg-review-card">
+      <div class="eg-review-card__stars">★★★★★</div>
+      <p>"${r.text}"</p>
+      <p class="eg-review-card__name">${r.name}</p>
+    </div>
+  `).join('');
+}
+
+/* ---------- CARRUSEL AUTOMÁTICO DE RESEÑAS ---------- */
+function initReviewsCarousel() {
+  const track = document.getElementById('eg-reviews-track');
+  if (!track) return;
+
+  let paused = false;
+  let rafId;
+
+  function step() {
+    if (!paused) {
+      // Avanza suavemente; al llegar al final vuelve al inicio (loop infinito)
+      track.scrollLeft += 0.6;
+      const maxScroll = track.scrollWidth - track.clientWidth;
+      if (track.scrollLeft >= maxScroll - 1) {
+        gsap.to(track, { scrollLeft: 0, duration: 0.8, ease: 'power2.inOut' });
+      }
+    }
+    rafId = requestAnimationFrame(step);
+  }
+
+  track.addEventListener('mouseenter', () => { paused = true; });
+  track.addEventListener('mouseleave', () => { paused = false; });
+  track.addEventListener('touchstart', () => { paused = true; }, { passive: true });
+  track.addEventListener('touchend', () => { setTimeout(() => { paused = false; }, 2500); });
+
+  // Solo activa el auto-scroll si el usuario no pidió reducir movimiento
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    rafId = requestAnimationFrame(step);
+  }
+}
+
+/* ---------- CONTADOR DE ESTADÍSTICAS ---------- */
+function animateStats() {
+  document.querySelectorAll('.eg-stat__number').forEach(el => {
+    const target = Number(el.dataset.count);
+    const prefix = el.dataset.prefix || '';
+    const suffix = el.dataset.suffix || '';
+    const counter = { val: 0 };
+
+    ScrollTrigger.create({
+      trigger: el,
+      start: 'top 85%',
+      once: true,
+      onEnter: () => {
+        gsap.to(counter, {
+          val: target,
+          duration: 1.8,
+          ease: 'power2.out',
+          onUpdate: () => {
+            el.textContent = `${prefix}${Math.floor(counter.val).toLocaleString('es-CO')}${suffix}`;
+          },
+        });
+      },
+    });
+  });
+}
+
+/* ---------- SCROLL REVEALS GENERALES (fade + blur + stagger) ---------- */
+function initScrollReveals() {
+  gsap.utils.toArray('section').forEach(section => {
+    gsap.from(section.querySelectorAll('.eg-section-head, .eg-card, .eg-gallery-item, .eg-review-card, .eg-about__media, .eg-about__content, .eg-form, .eg-contact__info'), {
+      scrollTrigger: { trigger: section, start: 'top 80%' },
+      opacity: 0,
+      y: 34,
+      filter: 'blur(6px)',
+      duration: 0.8,
+      stagger: 0.06,
+      ease: 'power2.out',
+    });
+  });
+}
+
+/* ---------- HEADER: fondo sólido al hacer scroll ---------- */
+function initHeaderScroll() {
+  const header = document.getElementById('eg-header');
+  ScrollTrigger.create({
+    start: 'top -80',
+    onUpdate: (self) => {
+      header.style.background = self.progress > 0 || window.scrollY > 80
+        ? 'rgba(5,5,5,0.92)'
+        : 'linear-gradient(to bottom, rgba(5,5,5,0.85), transparent)';
+    },
+  });
+}
+
+/* ---------- MENÚ MÓVIL ---------- */
+function initMobileMenu() {
+  const toggle = document.getElementById('eg-menu-toggle');
+  const nav = document.querySelector('.eg-nav');
+  if (!nav) return;
+
+  nav.style.cssText += 'flex-direction:column;position:fixed;top:70px;left:0;right:0;background:#0d0d0d;padding:24px;';
+  gsap.set(nav, { autoAlpha: 0, y: -16, display: 'none' });
+
+  let open = false;
+  toggle?.addEventListener('click', () => {
+    open = !open;
+    if (open) {
+      gsap.set(nav, { display: 'flex' });
+      gsap.to(nav, { autoAlpha: 1, y: 0, duration: 0.35, ease: 'power2.out' });
+    } else {
+      gsap.to(nav, { autoAlpha: 0, y: -16, duration: 0.25, ease: 'power2.in', onComplete: () => gsap.set(nav, { display: 'none' }) });
+    }
+  });
+}
+
+/* ---------- BUSCADOR INSTANTÁNEO ---------- */
+function initSearch() {
+  const toggleBtn = document.getElementById('eg-search-toggle');
+  const searchPanel = document.getElementById('eg-search');
+  const input = document.getElementById('eg-search-input');
+  const results = document.getElementById('eg-search-results');
+
+  toggleBtn?.addEventListener('click', () => {
+    searchPanel.classList.toggle('is-open');
+    if (searchPanel.classList.contains('is-open')) input.focus();
+  });
+
+  input?.addEventListener('input', () => {
+    const term = input.value.trim().toLowerCase();
+    const products = window.EG_PRODUCTS || [];
+    if (!term) { results.innerHTML = ''; return; }
+
+    const matches = products.filter(p =>
+      p.title.toLowerCase().includes(term) ||
+      (p.category || '').toLowerCase().includes(term) ||
+      p.handle.toLowerCase().includes(term)
+    ).slice(0, 8);
+
+    results.innerHTML = matches.length
+      ? matches.map(p => `
+          <div class="eg-search-item">
+            <span>${p.title}</span>
+            <span>POR CONFIRMAR</span>
+          </div>`).join('')
+      : '<p class="eg-search-item">Sin resultados.</p>';
+  });
+}
+
+/* ---------- FILTROS DEL CATÁLOGO ---------- */
+function initFilters() {
+  const grid = document.getElementById('eg-product-grid');
+  const filters = ['filter-piece', 'filter-design'];
+
+  // Poblar el filtro de diseños disponibles a partir del catálogo cargado
+  const designSelect = document.getElementById('filter-design');
+  if (designSelect && designSelect.options.length <= 1) {
+    const designs = [...new Set((window.EG_PRODUCTS || []).map(p => p.design).filter(Boolean))];
+    designSelect.insertAdjacentHTML('beforeend',
+      designs.map(d => `<option value="${d}">${d}</option>`).join(''));
+  }
+
+  function applyFilters() {
+    const products = window.EG_PRODUCTS || [];
+    const piece = document.getElementById('filter-piece').value;
+    const design = document.getElementById('filter-design').value;
+
+    const filtered = products.filter(p =>
+      (!piece || p.category === piece) &&
+      (!design || p.design === design)
+    );
+    renderProductGrid(filtered);
+  }
+
+  filters.forEach(id => document.getElementById(id)?.addEventListener('change', applyFilters));
+  document.getElementById('filter-reset')?.addEventListener('click', () => {
+    filters.forEach(id => { document.getElementById(id).value = ''; });
+    renderProductGrid(window.EG_PRODUCTS || []);
+  });
+}
+
+/* ---------- FAVORITOS (LocalStorage) ---------- */
+function initFavorites() {
+  document.body.addEventListener('click', (e) => {
+    const favBtn = e.target.closest('[data-fav]');
+    if (!favBtn) return;
+    const id = favBtn.dataset.fav;
+    const favs = JSON.parse(localStorage.getItem('egFavorites') || '[]');
+    const idx = favs.indexOf(id);
+    if (idx > -1) {
+      favs.splice(idx, 1);
+      favBtn.textContent = '♡';
+    } else {
+      favs.push(id);
+      favBtn.textContent = '♥';
+    }
+    localStorage.setItem('egFavorites', JSON.stringify(favs));
+  });
+}
+
+/* ---------- GALERÍA PREMIUM: helper opcional para agregar tus fotos ----------
+   Los contenedores (.eg-gallery-item) ya están en el HTML, vacíos y listos.
+   Cuando tengas tus fotografías, tienes dos formas de agregarlas:
+
+   1) Manual (recomendado): dentro de cada <div class="eg-gallery-item">
+      agrega <img src="assets/images/gallery/tu-foto.jpg" alt="..." loading="lazy">
+      y el efecto de borde/glow/zoom se aplica automáticamente.
+
+   2) Por código: usa addGalleryPhoto(indice, url, alt) desde la consola
+      o desde otro script, ej: addGalleryPhoto(0, 'assets/images/gallery/1.jpg'); */
+function addGalleryPhoto(index, url, alt = 'Trabajo realizado — EDWIN GRAPHICS') {
+  const items = document.querySelectorAll('#eg-gallery-grid .eg-gallery-item');
+  const item = items[index];
+  if (!item) return;
+  item.innerHTML = `<img src="${url}" alt="${alt}" loading="lazy">`;
+}
+
+/* ---------- GALERÍA: LIGHTBOX CON ZOOM (se activa solo si hay fotos reales) ---------- */
+function initGalleryLightbox() {
+  const grid = document.getElementById('eg-gallery-grid');
+  if (!grid) return;
+
+  // Crea el overlay del lightbox una sola vez
+  const overlay = document.createElement('div');
+  overlay.className = 'eg-lightbox';
+  overlay.innerHTML = `
+    <button class="eg-lightbox__close" aria-label="Cerrar">✕</button>
+    <button class="eg-lightbox__prev" aria-label="Anterior">‹</button>
+    <img class="eg-lightbox__img" alt="">
+    <button class="eg-lightbox__next" aria-label="Siguiente">›</button>
+  `;
+  document.body.appendChild(overlay);
+
+  const imgEl = overlay.querySelector('.eg-lightbox__img');
+  let images = [];
+  let index = 0;
+
+  function show(i) {
+    index = (i + images.length) % images.length;
+    const src = images[index].src;
+    gsap.fromTo(imgEl, { opacity: 0, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.35, ease: 'power2.out' });
+    imgEl.src = src;
+    imgEl.alt = images[index].alt;
+  }
+
+  function open(i) {
+    images = Array.from(grid.querySelectorAll('img'));
+    if (!images.length) return;
+    overlay.classList.add('is-open');
+    document.documentElement.classList.add('eg-lock');
+    show(i);
+  }
+
+  function close() {
+    overlay.classList.remove('is-open');
+    document.documentElement.classList.remove('eg-lock');
+  }
+
+  grid.addEventListener('click', (e) => {
+    const img = e.target.closest('img');
+    if (!img) return;
+    const all = Array.from(grid.querySelectorAll('img'));
+    open(all.indexOf(img));
+  });
+
+  overlay.querySelector('.eg-lightbox__close').addEventListener('click', close);
+  overlay.querySelector('.eg-lightbox__prev').addEventListener('click', () => show(index - 1));
+  overlay.querySelector('.eg-lightbox__next').addEventListener('click', () => show(index + 1));
+  overlay.addEventListener('click', (e) => { if (e.target === overlay) close(); });
+
+  document.addEventListener('keydown', (e) => {
+    if (!overlay.classList.contains('is-open')) return;
+    if (e.key === 'Escape') close();
+    if (e.key === 'ArrowRight') show(index + 1);
+    if (e.key === 'ArrowLeft') show(index - 1);
+  });
+}
+
+/* ---------- FORMULARIO DE CONTACTO ---------- */
+function initContactForm() {
+  const form = document.getElementById('eg-contact-form');
+  const status = document.getElementById('eg-form-status');
+  form?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    // Sustituir por integración real (Formspree, backend propio, etc.)
+    status.textContent = 'Gracias, hemos recibido tu mensaje. Te contactaremos pronto.';
+    form.reset();
+  });
+}
+
+/* ---------- SCROLL INDICATOR DEL HERO ---------- */
+document.getElementById('eg-scroll-indicator')?.addEventListener('click', () => {
+  document.getElementById('estadisticas')?.scrollIntoView({ behavior: 'smooth' });
+});
+
+/* ---------- HERO: reveal premium (fade + blur + slide) ----------
+   Se dispara cuando termina la intro (evento eg:introComplete),
+   para que el hero aparezca justo después del destello final. */
+function heroReveal() {
+  if (!window.gsap) return;
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduced) return; // el CSS ya deja estos elementos visibles en ese caso
+
+  gsap.timeline({ defaults: { ease: 'power3.out' } })
+    .to('.eg-hero__eyebrow', { opacity: 1, filter: 'blur(0px)', y: 0, duration: 0.8 })
+    .to('.eg-hero__title', { opacity: 1, filter: 'blur(0px)', y: 0, duration: 1 }, '-=0.5')
+    .to('.eg-hero__subtitle', { opacity: 1, filter: 'blur(0px)', y: 0, duration: 0.8 }, '-=0.6')
+    .to('.eg-hero__actions', { opacity: 1, filter: 'blur(0px)', y: 0, duration: 0.7 }, '-=0.5');
+}
+
+/* ---------- HERO: parallax suave al hacer scroll ---------- */
+function initHeroParallax() {
+  const hero = document.querySelector('.eg-hero');
+  if (!hero || !window.gsap || !window.ScrollTrigger) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  gsap.to('.eg-hero__moto-wrap', {
+    yPercent: 15,
+    ease: 'none',
+    scrollTrigger: { trigger: hero, start: 'top top', end: 'bottom top', scrub: true },
+  });
+  gsap.to('.eg-hero__content', {
+    yPercent: -25,
+    opacity: 0.35,
+    ease: 'none',
+    scrollTrigger: { trigger: hero, start: 'top top', end: 'bottom top', scrub: true },
+  });
+}
+
+/* ---------- MICROANIMACIONES DE BOTONES: ripple premium ----------
+   Delegación de eventos: funciona también en botones que se crean
+   dinámicamente después (tarjetas de producto, carrito, etc.). */
+function initButtonMicroAnimations() {
+  document.body.addEventListener('click', (e) => {
+    const btn = e.target.closest('.eg-btn');
+    if (!btn) return;
+
+    const rect = btn.getBoundingClientRect();
+    const size = Math.max(rect.width, rect.height);
+    const ripple = document.createElement('span');
+    ripple.className = 'eg-ripple';
+    ripple.style.width = ripple.style.height = `${size}px`;
+    ripple.style.left = `${e.clientX - rect.left - size / 2}px`;
+    ripple.style.top = `${e.clientY - rect.top - size / 2}px`;
+
+    btn.appendChild(ripple);
+    ripple.addEventListener('animationend', () => ripple.remove());
+  });
+}
+
+/* ---------- INIT ---------- */
+document.addEventListener('DOMContentLoaded', () => {
+  populatePieceFilter();
+  renderReviews();
+  animateStats();
+  initHeaderScroll();
+  initMobileMenu();
+  initSearch();
+  initFavorites();
+  initContactForm();
+  initReviewsCarousel();
+  initGalleryLightbox();
+  initButtonMicroAnimations();
+  initHeroParallax();
+});
+
+document.addEventListener('eg:productsLoaded', () => {
+  initFilters();
+});
+
+document.addEventListener('eg:introComplete', () => {
+  initScrollReveals();
+  heroReveal();
+});
+
+// Si la intro ya no existe al cargar (reducción de movimiento u otro caso),
+// asegúrate de inicializar los reveals y el hero igualmente.
+if (!document.getElementById('eg-loader')) {
+  document.addEventListener('DOMContentLoaded', () => {
+    initScrollReveals();
+    heroReveal();
+  });
+}
+
+
+</script>
+</body>
+</html>
