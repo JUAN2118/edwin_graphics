@@ -1,0 +1,4776 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>EdwinGraphics | Personalización</title>
+
+<meta
+    name="description"
+    content="EdwinGraphics - Personalización, calcomanías y diseño para motos."
+>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link
+    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet"
+>
+
+<style>
+
+/* =========================================================
+   VARIABLES
+========================================================= */
+
+:root{
+    --negro:#030303;
+    --negro2:#070707;
+    --negro3:#101010;
+
+    --blanco:#ffffff;
+
+    --gris:#777777;
+    --gris2:#aaaaaa;
+
+    --rojo:#e10600;
+    --rojo2:#ff211b;
+
+    --borde:rgba(255,255,255,.10);
+
+    --transicion:
+        .35s cubic-bezier(.2,.8,.2,1);
+}
+
+
+/* =========================================================
+   RESET
+========================================================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:var(--negro);
+    color:white;
+    font-family:"Montserrat",sans-serif;
+    overflow-x:hidden;
+}
+
+body::-webkit-scrollbar{
+    width:7px;
+}
+
+body::-webkit-scrollbar-track{
+    background:#020202;
+}
+
+body::-webkit-scrollbar-thumb{
+    background:#292929;
+}
+
+body::-webkit-scrollbar-thumb:hover{
+    background:var(--rojo);
+}
+
+button,
+input{
+    font-family:inherit;
+}
+
+button{
+    cursor:pointer;
+}
+
+a{
+    color:inherit;
+    text-decoration:none;
+}
+
+
+/* =========================================================
+   INTRO
+========================================================= */
+
+.intro{
+    position:fixed;
+    inset:0;
+    z-index:9999;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    background:#020202;
+
+    transition:
+        opacity 1s ease,
+        visibility 1s ease;
+}
+
+.intro.hidden{
+    opacity:0;
+    visibility:hidden;
+    pointer-events:none;
+}
+
+.intro-content{
+    text-align:center;
+}
+
+.intro-logo{
+    width:105px;
+    height:105px;
+    object-fit:contain;
+
+    opacity:0;
+
+    transform:
+        translateY(25px)
+        scale(.75);
+
+    animation:
+        introLogo 1s
+        cubic-bezier(.2,.8,.2,1)
+        forwards;
+}
+
+.intro-name{
+    margin-top:20px;
+
+    font-family:"Bebas Neue",sans-serif;
+
+    font-size:65px;
+    letter-spacing:5px;
+
+    opacity:0;
+
+    transform:translateY(20px);
+
+    animation:
+        introText 1s
+        .45s
+        ease
+        forwards;
+}
+
+.intro-name span{
+    color:var(--rojo);
+}
+
+.intro-line{
+    width:0;
+    height:2px;
+
+    margin:18px auto;
+
+    background:var(--rojo);
+
+    box-shadow:
+        0 0 15px
+        rgba(225,6,0,.7);
+
+    animation:
+        introLine 1s
+        .8s
+        ease
+        forwards;
+}
+
+.intro-sub{
+    font-size:8px;
+    letter-spacing:4px;
+    color:#777;
+
+    opacity:0;
+
+    animation:
+        introText 1s
+        1.1s
+        ease
+        forwards;
+}
+
+@keyframes introLogo{
+    to{
+        opacity:1;
+        transform:
+            translateY(0)
+            scale(1);
+    }
+}
+
+@keyframes introText{
+    to{
+        opacity:1;
+        transform:
+            translateY(0);
+    }
+}
+
+@keyframes introLine{
+    to{
+        width:190px;
+    }
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+header{
+    position:fixed;
+
+    top:0;
+    left:0;
+    right:0;
+
+    z-index:1000;
+
+    height:76px;
+
+    display:flex;
+    justify-content:center;
+
+    background:
+        rgba(3,3,3,.78);
+
+    backdrop-filter:
+        blur(18px);
+
+    border-bottom:
+        1px solid
+        rgba(255,255,255,.06);
+}
+
+.nav{
+    width:min(1350px,92%);
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+
+/* LOGO */
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.logo img{
+    width:43px;
+    height:43px;
+    object-fit:contain;
+}
+
+.logo-title{
+    font-family:"Bebas Neue",sans-serif;
+    font-size:29px;
+    letter-spacing:1px;
+}
+
+.logo-title span{
+    color:var(--rojo);
+}
+
+
+/* MENU */
+
+.menu{
+    display:flex;
+    align-items:center;
+    gap:34px;
+}
+
+.menu a{
+    color:#999;
+
+    font-size:10px;
+    font-weight:800;
+
+    transition:var(--transicion);
+}
+
+.menu a:hover{
+    color:white;
+}
+
+
+/* HEADER RIGHT */
+
+.header-right{
+    display:flex;
+    align-items:center;
+    gap:9px;
+}
+
+
+/* CART */
+
+.cart-button{
+    position:relative;
+
+    padding:
+        11px
+        16px;
+
+    border:
+        1px solid
+        var(--borde);
+
+    border-radius:30px;
+
+    background:#101010;
+
+    color:white;
+
+    font-size:9px;
+    font-weight:900;
+
+    transition:var(--transicion);
+}
+
+.cart-button:hover{
+    background:white;
+    color:#000;
+
+    transform:
+        translateY(-3px);
+}
+
+.cart-number{
+    position:absolute;
+
+    top:-7px;
+    right:-6px;
+
+    width:19px;
+    height:19px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border-radius:50%;
+
+    background:var(--rojo);
+    color:white;
+
+    font-size:8px;
+}
+
+
+/* WHATSAPP */
+
+.header-whatsapp{
+    padding:
+        11px
+        19px;
+
+    border-radius:30px;
+
+    background:var(--rojo);
+
+    color:white;
+
+    font-size:9px;
+    font-weight:900;
+
+    transition:var(--transicion);
+}
+
+.header-whatsapp:hover{
+    background:var(--rojo2);
+
+    transform:
+        translateY(-3px);
+
+    box-shadow:
+        0 10px 35px
+        rgba(225,6,0,.35);
+}
+
+
+/* MOBILE MENU */
+
+.menu-toggle{
+    display:none;
+
+    border:none;
+    background:none;
+
+    color:white;
+
+    font-size:24px;
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero{
+    position:relative;
+
+    min-height:100vh;
+
+    display:flex;
+    align-items:flex-end;
+
+    overflow:hidden;
+
+    background:#030303;
+}
+
+
+/* =========================================================
+   FONDO LED
+========================================================= */
+
+.led-background{
+    position:absolute;
+
+    inset:0;
+
+    overflow:hidden;
+
+    pointer-events:none;
+}
+
+
+/* GLOW */
+
+.led-glow{
+    position:absolute;
+
+    width:380px;
+    height:380px;
+
+    border-radius:50%;
+
+    background:
+        rgba(225,6,0,.055);
+
+    filter:blur(100px);
+
+    right:12%;
+    top:30%;
+
+    animation:
+        glowMove
+        9s
+        ease-in-out
+        infinite
+        alternate;
+}
+
+@keyframes glowMove{
+
+    0%{
+        transform:
+            translate(-20px,-15px);
+    }
+
+    100%{
+        transform:
+            translate(35px,30px);
+    }
+}
+
+
+/* LED LINES */
+
+.led-line{
+    position:absolute;
+
+    height:1px;
+    width:280px;
+
+    opacity:.25;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            var(--rojo),
+            transparent
+        );
+
+    box-shadow:
+        0 0 8px
+        rgba(225,6,0,.35);
+
+    animation:
+        ledMove
+        7s
+        linear
+        infinite;
+}
+
+.led-line.white{
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            white,
+            transparent
+        );
+
+    box-shadow:
+        0 0 7px
+        rgba(255,255,255,.25);
+}
+
+.led-line.one{
+    top:23%;
+    left:-100px;
+    transform:rotate(-16deg);
+}
+
+.led-line.two{
+    top:64%;
+    right:-100px;
+    transform:rotate(-16deg);
+    animation-delay:2s;
+}
+
+.led-line.three{
+    top:40%;
+    right:15%;
+    transform:rotate(20deg);
+    animation-delay:4s;
+}
+
+.led-line.four{
+    top:78%;
+    left:12%;
+    transform:rotate(10deg);
+    animation-delay:1s;
+}
+
+@keyframes ledMove{
+
+    0%{
+        opacity:.08;
+
+        transform:
+            translateX(-50px)
+            rotate(-16deg);
+    }
+
+    50%{
+        opacity:.35;
+    }
+
+    100%{
+        opacity:.08;
+
+        transform:
+            translateX(50px)
+            rotate(-16deg);
+    }
+}
+
+
+/* PARTICULAS FIJAS */
+
+.particle{
+    position:absolute;
+
+    width:2px;
+    height:2px;
+
+    border-radius:50%;
+
+    background:white;
+
+    opacity:.25;
+
+    animation:
+        particleMove
+        5s
+        linear
+        infinite;
+}
+
+.particle:nth-child(1){
+    left:10%;
+    top:30%;
+}
+
+.particle:nth-child(2){
+    left:24%;
+    top:70%;
+    animation-delay:1s;
+}
+
+.particle:nth-child(3){
+    left:48%;
+    top:25%;
+    animation-delay:2s;
+}
+
+.particle:nth-child(4){
+    left:72%;
+    top:70%;
+    animation-delay:3s;
+}
+
+.particle:nth-child(5){
+    left:87%;
+    top:30%;
+    animation-delay:4s;
+}
+
+@keyframes particleMove{
+
+    0%{
+        opacity:0;
+        transform:
+            translateY(25px);
+    }
+
+    40%{
+        opacity:.4;
+    }
+
+    100%{
+        opacity:0;
+
+        transform:
+            translateY(-30px);
+    }
+}
+
+
+/* =========================================================
+   INTERACCIÓN TÁCTIL DEL FONDO — MÓVIL
+========================================================= */
+const ledBackground = document.querySelector('.led-background');
+let lastTouchLed = 0;
+
+function createTouchLed(x,y){
+    if(!ledBackground) return;
+    const now=Date.now();
+    if(now-lastTouchLed<90) return;
+    lastTouchLed=now;
+    const line=document.createElement('span');
+    line.className='touch-led';
+    const rect=ledBackground.getBoundingClientRect();
+    line.style.left=(x-rect.left-60)+'px';
+    line.style.top=(y-rect.top)+'px';
+    ledBackground.appendChild(line);
+    setTimeout(()=>line.remove(),700);
+}
+
+document.addEventListener('touchmove',e=>{
+    const t=e.touches[0];
+    createTouchLed(t.clientX,t.clientY);
+},{passive:true});
+
+document.addEventListener('touchstart',e=>{
+    const t=e.touches[0];
+    createTouchLed(t.clientX,t.clientY);
+},{passive:true});
+
+/* =========================================================
+   MOUSE INTERACTIVO
+========================================================= */
+
+.mouse-light{
+    position:fixed;
+
+    width:240px;
+    height:240px;
+
+    border-radius:50%;
+
+    pointer-events:none;
+
+    z-index:2;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(225,6,0,.13) 0%,
+            rgba(225,6,0,.05) 30%,
+            transparent 70%
+        );
+
+    transform:
+        translate(-50%,-50%);
+
+    opacity:0;
+
+    transition:
+        opacity .25s ease;
+}
+
+body:hover .mouse-light{
+    opacity:1;
+}
+
+.mouse-particles{
+    position:fixed;
+
+    inset:0;
+
+    pointer-events:none;
+
+    z-index:3;
+}
+
+.mouse-particle{
+    position:fixed;
+
+    width:3px;
+    height:3px;
+
+    border-radius:50%;
+
+    background:var(--rojo);
+
+    pointer-events:none;
+
+    box-shadow:
+        0 0 10px
+        rgba(225,6,0,.8);
+
+    animation:
+        mouseParticle
+        .8s
+        ease-out
+        forwards;
+}
+
+@keyframes mouseParticle{
+
+    0%{
+        opacity:.8;
+
+        transform:
+            translate(0,0)
+            scale(1);
+    }
+
+    100%{
+        opacity:0;
+
+        transform:
+            translate(
+                var(--move-x),
+                var(--move-y)
+            )
+            scale(0);
+    }
+}
+
+
+/* =========================================================
+   HERO CONTENT
+========================================================= */
+
+.hero-content{
+    position:relative;
+
+    z-index:5;
+
+    width:min(1350px,92%);
+
+    margin:auto;
+
+    padding-bottom:85px;
+}
+
+.hero-small{
+    color:#999;
+
+    font-size:9px;
+    font-weight:900;
+
+    letter-spacing:4px;
+
+    margin-bottom:22px;
+}
+
+.hero h1{
+    font-family:"Bebas Neue",sans-serif;
+
+    font-size:
+        clamp(
+            70px,
+            10vw,
+            145px
+        );
+
+    line-height:.82;
+
+    letter-spacing:3px;
+}
+
+.hero h1 span{
+    color:var(--rojo);
+}
+
+.hero-description{
+    max-width:620px;
+
+    margin-top:30px;
+
+    color:#999;
+
+    font-size:15px;
+
+    line-height:1.8;
+}
+
+.hero-description strong{
+    color:white;
+}
+
+.hero-buttons{
+    display:flex;
+
+    gap:12px;
+
+    margin-top:35px;
+}
+
+
+/* =========================================================
+   BOTONES GENERALES
+========================================================= */
+
+.btn{
+    min-height:52px;
+
+    display:inline-flex;
+
+    align-items:center;
+    justify-content:center;
+
+    padding:
+        0
+        25px;
+
+    border-radius:5px;
+
+    font-size:9px;
+    font-weight:900;
+
+    transition:var(--transicion);
+}
+
+.btn-red{
+    background:var(--rojo);
+    color:white;
+}
+
+.btn-red:hover{
+    background:var(--rojo2);
+
+    transform:
+        translateY(-5px)
+        scale(1.02);
+
+    box-shadow:
+        0 15px 40px
+        rgba(225,6,0,.3);
+}
+
+.btn-outline{
+    background:
+        rgba(255,255,255,.025);
+
+    border:
+        1px solid
+        rgba(255,255,255,.18);
+
+    color:white;
+}
+
+.btn-outline:hover{
+    background:white;
+    color:#000;
+
+    transform:
+        translateY(-5px)
+        scale(1.02);
+
+    box-shadow:
+        0 15px 35px
+        rgba(255,255,255,.08);
+}
+
+
+/* =========================================================
+   SECCIONES
+========================================================= */
+
+section{
+    padding:
+        140px 4%;
+}
+
+.container{
+    width:min(1350px,100%);
+    margin:auto;
+}
+
+.label{
+    color:var(--rojo);
+
+    font-size:9px;
+    font-weight:900;
+
+    letter-spacing:4px;
+
+    margin-bottom:17px;
+}
+
+.section-title{
+    font-family:"Bebas Neue",sans-serif;
+
+    font-size:
+        clamp(
+            55px,
+            7vw,
+            95px
+        );
+
+    line-height:.85;
+
+    letter-spacing:2px;
+}
+
+.description{
+    max-width:520px;
+
+    color:#858585;
+
+    font-size:13px;
+
+    line-height:1.8;
+}
+
+
+/* =========================================================
+   PRODUCTOS
+========================================================= */
+
+.products{
+    background:#080808;
+}
+
+.products-top{
+    display:flex;
+
+    justify-content:space-between;
+    align-items:flex-end;
+
+    gap:40px;
+
+    margin-bottom:65px;
+}
+
+.products-grid{
+    display:grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap:15px;
+}
+
+.product{
+    position:relative;
+
+    min-height:500px;
+
+    overflow:hidden;
+
+    background:#111;
+
+    border:
+        1px solid
+        var(--borde);
+
+    transition:var(--transicion);
+}
+
+.product:hover{
+    transform:
+        translateY(-8px);
+
+    border-color:
+        rgba(225,6,0,.45);
+
+    box-shadow:
+        0 30px 70px
+        rgba(0,0,0,.5);
+}
+
+.product-visual{
+    position:absolute;
+
+    inset:0;
+
+    background:
+
+        radial-gradient(
+            circle at 50% 35%,
+            rgba(225,6,0,.22),
+            transparent 28%
+        ),
+
+        linear-gradient(
+            145deg,
+            #1b1b1b,
+            #060606
+        );
+}
+
+.product-visual::after{
+    content:"";
+
+    position:absolute;
+
+    left:-20%;
+    top:35%;
+
+    width:140%;
+    height:100px;
+
+    border-top:
+        1px solid
+        rgba(255,255,255,.18);
+
+    border-bottom:
+        2px solid
+        var(--rojo);
+
+    transform:
+        rotate(-18deg);
+
+    transition:var(--transicion);
+}
+
+.product:hover
+.product-visual::after{
+
+    transform:
+        rotate(-18deg)
+        translateX(35px);
+}
+
+.product-info{
+    position:absolute;
+
+    left:0;
+    right:0;
+    bottom:0;
+
+    padding:25px;
+
+    background:
+        linear-gradient(
+            transparent,
+            rgba(0,0,0,.98) 40%
+        );
+}
+
+.product-type{
+    color:#777;
+
+    font-size:8px;
+    font-weight:900;
+
+    letter-spacing:3px;
+}
+
+.product-info h3{
+    margin-top:7px;
+
+    font-family:"Bebas Neue",sans-serif;
+
+    font-size:30px;
+}
+
+.product-price{
+    margin-top:4px;
+
+    color:#888;
+
+    font-size:9px;
+}
+
+.product-price span{
+    color:var(--rojo);
+}
+
+.product-actions{
+    display:grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap:7px;
+
+    margin-top:17px;
+}
+
+.product-actions button{
+    position:relative;
+
+    overflow:hidden;
+
+    border:none;
+
+    padding:13px 5px;
+
+    font-size:8px;
+    font-weight:900;
+
+    transition:
+        transform .3s ease,
+        background .3s ease,
+        color .3s ease,
+        box-shadow .3s ease;
+}
+
+.details{
+    background:var(--rojo);
+    color:white;
+}
+
+.details:hover{
+    background:var(--rojo2);
+
+    transform:
+        translateY(-4px);
+
+    box-shadow:
+        0 8px 25px
+        rgba(225,6,0,.35);
+}
+
+.add-cart{
+    background:white;
+    color:#000;
+}
+
+.add-cart:hover{
+    background:#fff;
+    color:var(--rojo);
+
+    transform:
+        translateY(-4px);
+
+    box-shadow:
+        0 8px 25px
+        rgba(255,255,255,.12);
+}
+
+
+/* =========================================================
+   UBICACIÓN
+========================================================= */
+
+.location{
+    background:#040404;
+}
+
+.location-grid{
+    display:grid;
+
+    grid-template-columns:
+        .65fr 1.35fr;
+
+    gap:17px;
+
+    margin-top:60px;
+}
+
+.location-info{
+    min-height:520px;
+
+    padding:45px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:space-between;
+
+    background:#0c0c0c;
+
+    border:
+        1px solid
+        var(--borde);
+}
+
+.location-info h3{
+    font-family:"Bebas Neue",sans-serif;
+
+    font-size:60px;
+
+    line-height:.85;
+}
+
+.location-info p{
+    margin-top:10px;
+
+    color:#888;
+
+    font-size:13px;
+
+    line-height:1.8;
+}
+
+.location-note{
+    border-left:
+        2px solid
+        var(--rojo);
+
+    padding-left:16px;
+}
+
+.map{
+    min-height:520px;
+
+    overflow:hidden;
+
+    border:
+        1px solid
+        var(--borde);
+}
+
+.map iframe{
+    width:100%;
+    height:100%;
+
+    min-height:520px;
+
+    border:none;
+
+    filter:
+        grayscale(1)
+        contrast(1.1);
+}
+
+
+/* =========================================================
+   CONTACTO
+========================================================= */
+
+.contact{
+    text-align:center;
+
+    background:
+
+        radial-gradient(
+            circle at center,
+            rgba(225,6,0,.09),
+            transparent 42%
+        );
+}
+
+.contact h2{
+    font-family:"Bebas Neue",sans-serif;
+
+    font-size:
+        clamp(
+            65px,
+            9vw,
+            125px
+        );
+
+    line-height:.82;
+}
+
+.contact h2 span{
+    color:var(--rojo);
+}
+
+.contact-description{
+    max-width:650px;
+
+    margin:
+        30px auto;
+
+    color:#888;
+
+    font-size:14px;
+
+    line-height:1.8;
+}
+
+
+/* =========================================================
+   REDES SOCIALES
+========================================================= */
+
+.socials{
+    display:flex;
+
+    justify-content:center;
+
+    flex-wrap:wrap;
+
+    gap:10px;
+
+    margin-top:35px;
+}
+
+.social{
+    position:relative;
+
+    overflow:hidden;
+
+    min-width:145px;
+    height:52px;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    border:
+        1px solid
+        rgba(255,255,255,.16);
+
+    background:#090909;
+
+    color:white;
+
+    font-size:9px;
+    font-weight:900;
+
+    letter-spacing:1px;
+
+    transition:
+        background .3s ease,
+        color .3s ease,
+        border-color .3s ease,
+        transform .3s ease,
+        box-shadow .3s ease;
+}
+
+.social::before{
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:var(--rojo);
+
+    transform:
+        translateY(100%);
+
+    transition:
+        transform .35s
+        cubic-bezier(.2,.8,.2,1);
+}
+
+.social span{
+    position:relative;
+    z-index:2;
+}
+
+.social:hover{
+    background:var(--rojo);
+
+    border-color:var(--rojo);
+
+    color:white;
+
+    transform:
+        translateY(-5px)
+        scale(1.02);
+
+    box-shadow:
+        0 12px 35px
+        rgba(225,6,0,.35);
+}
+
+.social:hover::before{
+    transform:
+        translateY(0);
+}
+
+
+/* =========================================================
+   CARRITO
+========================================================= */
+
+.cart-overlay{
+    position:fixed;
+
+    inset:0;
+
+    z-index:4999;
+
+    background:
+        rgba(0,0,0,.75);
+
+    opacity:0;
+    visibility:hidden;
+
+    transition:.4s;
+}
+
+.cart-overlay.active{
+    opacity:1;
+    visibility:visible;
+}
+
+.cart{
+    position:fixed;
+
+    top:0;
+    right:-450px;
+
+    width:min(430px,100%);
+    height:100vh;
+
+    z-index:5000;
+
+    display:flex;
+    flex-direction:column;
+
+    background:#0b0b0b;
+
+    border-left:
+        1px solid
+        var(--borde);
+
+    transition:
+        right .45s
+        cubic-bezier(.2,.8,.2,1);
+}
+
+.cart.active{
+    right:0;
+}
+
+.cart-head{
+    height:78px;
+
+    padding:
+        0 24px;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    border-bottom:
+        1px solid
+        var(--borde);
+}
+
+.cart-head h3{
+    font-family:"Bebas Neue",sans-serif;
+
+    font-size:30px;
+}
+
+.cart-close{
+    width:37px;
+    height:37px;
+
+    border-radius:50%;
+
+    border:
+        1px solid
+        var(--borde);
+
+    background:#151515;
+
+    color:white;
+
+    font-size:19px;
+
+    transition:.3s;
+}
+
+.cart-close:hover{
+    background:var(--rojo);
+    border-color:var(--rojo);
+
+    transform:
+        rotate(90deg);
+}
+
+.cart-list{
+    flex:1;
+
+    overflow-y:auto;
+
+    padding:20px;
+}
+
+.empty-cart{
+    height:100%;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    text-align:center;
+
+    color:#666;
+
+    font-size:12px;
+
+    line-height:1.8;
+}
+
+.cart-item{
+    display:flex;
+
+    gap:12px;
+
+    padding:15px 0;
+
+    border-bottom:
+        1px solid
+        var(--borde);
+}
+
+.cart-item-info{
+    flex:1;
+}
+
+.cart-item-info strong{
+    display:block;
+
+    font-size:11px;
+}
+
+.cart-item-info span{
+    display:block;
+
+    margin-top:5px;
+
+    color:#777;
+
+    font-size:9px;
+}
+
+.remove{
+    border:none;
+
+    background:none;
+
+    color:#777;
+
+    font-size:18px;
+
+    transition:.3s;
+}
+
+.remove:hover{
+    color:var(--rojo);
+
+    transform:
+        scale(1.2);
+}
+
+.cart-footer{
+    padding:20px;
+
+    border-top:
+        1px solid
+        var(--borde);
+}
+
+.cart-total{
+    display:flex;
+
+    justify-content:space-between;
+
+    margin-bottom:15px;
+
+    font-size:12px;
+}
+
+.cart-total span{
+    color:#888;
+}
+
+.checkout{
+    width:100%;
+
+    padding:16px;
+
+    border:none;
+
+    background:var(--rojo);
+
+    color:white;
+
+    font-size:9px;
+
+    font-weight:900;
+
+    transition:.3s;
+}
+
+.checkout:hover{
+    background:var(--rojo2);
+
+    transform:
+        translateY(-3px);
+
+    box-shadow:
+        0 12px 30px
+        rgba(225,6,0,.3);
+}
+
+
+/* =========================================================
+   CHECKOUT MODAL
+========================================================= */
+
+.checkout-modal{
+    position:fixed;
+
+    inset:0;
+
+    z-index:7000;
+
+    display:none;
+
+    align-items:center;
+    justify-content:center;
+
+    padding:20px;
+
+    background:
+        rgba(0,0,0,.88);
+
+    backdrop-filter:
+        blur(15px);
+}
+
+.checkout-modal.active{
+    display:flex;
+}
+
+.checkout-box{
+    position:relative;
+
+    width:min(720px,100%);
+
+    max-height:92vh;
+
+    overflow-y:auto;
+
+    padding:45px;
+
+    background:
+
+        linear-gradient(
+            145deg,
+            #111111,
+            #070707
+        );
+
+    border:
+        1px solid
+        rgba(255,255,255,.08);
+
+    box-shadow:
+        0 40px 120px
+        rgba(0,0,0,.8);
+
+    overflow:hidden;
+}
+
+
+/* LÍNEA SUPERIOR */
+
+.checkout-box::before{
+    content:"";
+
+    position:absolute;
+
+    top:0;
+    left:0;
+
+    width:100%;
+    height:2px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            #e10600,
+            #ff211b,
+            transparent
+        );
+
+    box-shadow:
+        0 0 15px
+        rgba(225,6,0,.7);
+
+    animation:
+        checkoutLine
+        3s
+        linear
+        infinite;
+}
+
+
+/* LÍNEA INFERIOR */
+
+.checkout-box::after{
+    content:"";
+
+    position:absolute;
+
+    bottom:0;
+    left:0;
+
+    width:100%;
+    height:2px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            #e10600,
+            #ff211b,
+            transparent
+        );
+
+    box-shadow:
+        0 0 15px
+        rgba(225,6,0,.7);
+
+    animation:
+        checkoutLineReverse
+        3s
+        linear
+        infinite;
+}
+
+@keyframes checkoutLine{
+
+    0%{
+        transform:
+            translateX(-100%);
+    }
+
+    100%{
+        transform:
+            translateX(100%);
+    }
+}
+
+@keyframes checkoutLineReverse{
+
+    0%{
+        transform:
+            translateX(100%);
+    }
+
+    100%{
+        transform:
+            translateX(-100%);
+    }
+}
+
+
+/* LÍNEAS LATERALES */
+
+.checkout-lines{
+    position:absolute;
+
+    top:0;
+    bottom:0;
+
+    left:0;
+    right:0;
+
+    pointer-events:none;
+}
+
+.checkout-lines::before{
+    content:"";
+
+    position:absolute;
+
+    left:0;
+    top:0;
+
+    width:1px;
+    height:100%;
+
+    background:
+        linear-gradient(
+            transparent,
+            #e10600 25%,
+            #ff211b 50%,
+            #e10600 75%,
+            transparent
+        );
+
+    box-shadow:
+        0 0 12px
+        rgba(225,6,0,.6);
+
+    animation:
+        sideLight
+        3s
+        linear
+        infinite;
+}
+
+.checkout-lines::after{
+    content:"";
+
+    position:absolute;
+
+    right:0;
+    top:0;
+
+    width:1px;
+    height:100%;
+
+    background:
+        linear-gradient(
+            transparent,
+            #e10600 25%,
+            #ff211b 50%,
+            #e10600 75%,
+            transparent
+        );
+
+    box-shadow:
+        0 0 12px
+        rgba(225,6,0,.6);
+
+    animation:
+        sideLightReverse
+        3s
+        linear
+        infinite;
+}
+
+@keyframes sideLight{
+
+    0%{
+        transform:
+            translateY(-100%);
+    }
+
+    100%{
+        transform:
+            translateY(100%);
+    }
+}
+
+@keyframes sideLightReverse{
+
+    0%{
+        transform:
+            translateY(100%);
+    }
+
+    100%{
+        transform:
+            translateY(-100%);
+    }
+}
+
+
+/* CERRAR */
+
+.checkout-close{
+    position:absolute;
+
+    top:18px;
+    right:18px;
+
+    width:38px;
+    height:38px;
+
+    border-radius:50%;
+
+    border:
+        1px solid
+        rgba(255,255,255,.12);
+
+    background:#151515;
+
+    color:white;
+
+    font-size:20px;
+
+    z-index:5;
+
+    transition:.3s;
+}
+
+.checkout-close:hover{
+    background:#e10600;
+
+    border-color:#e10600;
+
+    transform:
+        rotate(90deg);
+}
+
+
+/* CHECKOUT HEADER */
+
+.checkout-header{
+    position:relative;
+    z-index:2;
+}
+
+.checkout-label{
+    color:#e10600;
+
+    font-size:8px;
+    font-weight:900;
+
+    letter-spacing:3px;
+
+    margin-bottom:15px;
+}
+
+.checkout-box h3{
+    font-family:"Bebas Neue",sans-serif;
+
+    font-size:
+        clamp(
+            48px,
+            7vw,
+            72px
+        );
+
+    line-height:.83;
+
+    letter-spacing:1px;
+}
+
+.checkout-box h3 span{
+    color:#e10600;
+}
+
+.checkout-message{
+    max-width:570px;
+
+    margin-top:25px;
+
+    color:#858585;
+
+    font-size:12px;
+
+    line-height:1.9;
+}
+
+.checkout-message strong{
+    color:white;
+}
+
+
+/* TITULOS */
+
+.checkout-section-title{
+    margin-top:30px;
+    margin-bottom:12px;
+
+    color:#999;
+
+    font-size:8px;
+
+    font-weight:900;
+
+    letter-spacing:3px;
+}
+
+
+/* FORMULARIO */
+
+.form-grid{
+    display:grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap:10px;
+}
+
+.field{
+    width:100%;
+
+    padding:16px 15px;
+
+    background:#121212;
+
+    border:
+        1px solid
+        rgba(255,255,255,.08);
+
+    color:white;
+
+    outline:none;
+
+    font-size:10px;
+
+    transition:.3s;
+}
+
+.field.full{
+    grid-column:
+        1 / -1;
+}
+
+.field::placeholder{
+    color:#555;
+}
+
+.field:hover{
+    border-color:
+        rgba(225,6,0,.35);
+}
+
+.field:focus{
+    border-color:#e10600;
+
+    background:#151515;
+
+    box-shadow:
+        0 0 20px
+        rgba(225,6,0,.08);
+}
+
+
+/* PAGOS */
+
+.payment-options{
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:10px;
+}
+
+.payment{
+    min-height:75px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:flex-start;
+
+    padding:14px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.09);
+
+    background:#101010;
+
+    color:white;
+
+    text-align:left;
+
+    transition:.3s;
+}
+
+.payment strong{
+    font-size:11px;
+}
+
+.payment small{
+    margin-top:6px;
+
+    color:#666;
+
+    font-size:8px;
+}
+
+.payment:hover{
+    border-color:#e10600;
+
+    background:#151515;
+
+    transform:
+        translateY(-4px);
+
+    box-shadow:
+        0 10px 25px
+        rgba(225,6,0,.12);
+}
+
+.payment.active{
+    background:#e10600;
+
+    border-color:#e10600;
+
+    transform:
+        translateY(-4px);
+
+    box-shadow:
+        0 10px 30px
+        rgba(225,6,0,.25);
+}
+
+.payment.active small{
+    color:#ffd0d0;
+}
+
+
+/* RESUMEN */
+
+.checkout-summary{
+    display:flex;
+
+    justify-content:space-between;
+    align-items:center;
+
+    margin-top:25px;
+
+    padding:17px;
+
+    background:#090909;
+
+    border:
+        1px solid
+        rgba(255,255,255,.07);
+
+    color:#777;
+
+    font-size:9px;
+}
+
+.checkout-summary strong{
+    color:white;
+}
+
+
+/* BOTONES */
+
+.checkout-actions{
+    display:flex;
+
+    gap:10px;
+
+    margin-top:18px;
+}
+
+.cancel,
+.pay{
+    min-height:52px;
+
+    border:none;
+
+    font-size:8px;
+
+    font-weight:900;
+
+    transition:.3s;
+}
+
+.cancel{
+    flex:1;
+
+    border:
+        1px solid
+        rgba(255,255,255,.12);
+
+    background:#111;
+
+    color:#aaa;
+}
+
+.cancel:hover{
+    background:#fff;
+
+    color:#000;
+
+    transform:
+        translateY(-4px);
+}
+
+.pay{
+    flex:2;
+
+    background:#e10600;
+
+    color:white;
+}
+
+.pay:hover{
+    background:#ff211b;
+
+    transform:
+        translateY(-4px);
+
+    box-shadow:
+        0 15px 35px
+        rgba(225,6,0,.3);
+}
+
+
+/* SEGURIDAD */
+
+.secure-message{
+    margin-top:17px;
+
+    text-align:center;
+
+    color:#555;
+
+    font-size:8px;
+}
+
+
+/* =========================================================
+   MODAL DETALLES
+========================================================= */
+
+.details-modal{
+    position:fixed;
+
+    inset:0;
+
+    z-index:6000;
+
+    display:none;
+
+    align-items:center;
+    justify-content:center;
+
+    padding:20px;
+
+    background:
+        rgba(0,0,0,.82);
+
+    backdrop-filter:
+        blur(12px);
+}
+
+.details-modal.active{
+    display:flex;
+}
+
+.details-box{
+    position:relative;
+
+    width:min(520px,100%);
+
+    padding:40px;
+
+    background:#111;
+
+    border:
+        1px solid
+        rgba(255,255,255,.1);
+}
+
+.details-close{
+    position:absolute;
+
+    top:14px;
+    right:14px;
+
+    width:35px;
+    height:35px;
+
+    border-radius:50%;
+
+    border:
+        1px solid
+        var(--borde);
+
+    background:#181818;
+
+    color:white;
+
+    transition:.3s;
+}
+
+.details-close:hover{
+    background:var(--rojo);
+
+    border-color:var(--rojo);
+
+    transform:
+        rotate(90deg);
+}
+
+.details-label{
+    color:var(--rojo);
+
+    font-size:8px;
+    font-weight:900;
+
+    letter-spacing:3px;
+}
+
+.details-box h3{
+    margin-top:10px;
+
+    font-family:"Bebas Neue",sans-serif;
+
+    font-size:45px;
+}
+
+.details-box p{
+    margin:
+        15px 0 25px;
+
+    color:#888;
+
+    font-size:12px;
+
+    line-height:1.8;
+}
+
+
+/* =========================================================
+   WHATSAPP
+========================================================= */
+
+.whatsapp-float{
+    position:fixed;
+
+    right:25px;
+    bottom:25px;
+
+    z-index:900;
+
+    width:58px;
+    height:58px;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    border-radius:50%;
+
+    background:var(--rojo);
+
+    color:white;
+
+    font-size:9px;
+    font-weight:900;
+
+    transition:var(--transicion);
+
+    box-shadow:
+        0 15px 40px
+        rgba(0,0,0,.5);
+}
+
+.whatsapp-float:hover{
+    transform:
+        scale(1.1)
+        translateY(-4px);
+
+    background:var(--rojo2);
+
+    box-shadow:
+        0 15px 40px
+        rgba(225,6,0,.35);
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer{
+    padding:
+        35px 4%;
+
+    background:#020202;
+
+    border-top:
+        1px solid
+        var(--borde);
+}
+
+.footer{
+    width:min(1350px,100%);
+
+    margin:auto;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:space-between;
+
+    color:#666;
+
+    font-size:9px;
+}
+
+.footer-brand{
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    color:white;
+
+    font-family:"Bebas Neue",sans-serif;
+
+    font-size:23px;
+}
+
+.footer-brand img{
+    width:34px;
+    height:34px;
+
+    object-fit:contain;
+}
+
+
+/* =========================================================
+   REVEAL
+========================================================= */
+
+.reveal{
+    opacity:0;
+
+    transform:
+        translateY(30px);
+
+    transition:
+        opacity .8s ease,
+        transform .8s
+        cubic-bezier(.2,.8,.2,1);
+}
+
+.reveal.show{
+    opacity:1;
+
+    transform:none;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media(max-width:1100px){
+
+    .products-grid{
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+    .location-grid{
+        grid-template-columns:
+            1fr;
+    }
+}
+
+
+@media(max-width:760px){
+
+    header{
+        height:70px;
+    }
+
+    .menu{
+
+        display:none;
+
+        position:fixed;
+
+        top:70px;
+        left:0;
+        right:0;
+
+        padding:25px;
+
+        flex-direction:column;
+
+        background:#050505;
+
+        border-bottom:
+            1px solid
+            var(--borde);
+    }
+
+    .menu.open{
+        display:flex;
+    }
+
+    .menu-toggle{
+        display:block;
+    }
+
+    .header-whatsapp{
+        display:none;
+    }
+
+    .hero-content{
+        padding-bottom:60px;
+    }
+
+    .hero h1{
+        font-size:
+            clamp(
+                65px,
+                19vw,
+                105px
+            );
+    }
+
+    .hero-buttons{
+        flex-direction:column;
+    }
+
+    .btn{
+        width:100%;
+    }
+
+    section{
+        padding:
+            95px 5%;
+    }
+
+    .products-top{
+        display:block;
+    }
+
+    .products-top .description{
+        margin-top:25px;
+    }
+
+    .products-grid{
+        grid-template-columns:
+            1fr;
+    }
+
+    .location-info{
+        min-height:430px;
+        padding:30px;
+    }
+
+    .map,
+    .map iframe{
+        min-height:380px;
+    }
+
+    .form-grid{
+        grid-template-columns:
+            1fr;
+    }
+
+    .field.full{
+        grid-column:auto;
+    }
+
+    .payment-options{
+        grid-template-columns:
+            1fr;
+    }
+
+    .checkout-actions{
+        flex-direction:column;
+    }
+
+    .checkout-box{
+        padding:32px 24px;
+    }
+
+    .footer{
+        flex-direction:column;
+
+        align-items:flex-start;
+
+        gap:12px;
+    }
+}
+
+
+
+/* =========================================================
+   EDWINGRAPHICS — EXPERIENCIA MÓVIL PREMIUM
+   Esta capa NO reduce simplemente la versión de escritorio:
+   reorganiza la interfaz para teléfonos.
+========================================================= */
+@media (max-width: 760px){
+  body{
+    width:100%;
+    overflow-x:hidden;
+    -webkit-tap-highlight-color:transparent;
+  }
+
+  header{
+    height:64px;
+    background:rgba(3,3,3,.88);
+    backdrop-filter:blur(18px);
+  }
+
+  .nav{width:92%;}
+  .logo{gap:7px;}
+  .logo img{width:34px;height:34px;}
+  .logo-title{font-size:23px;letter-spacing:.5px;}
+
+  .header-right{gap:7px;}
+  .cart-button{
+    min-width:92px;
+    padding:10px 13px;
+    font-size:8px;
+  }
+  .menu-toggle{
+    width:42px;height:42px;
+    display:flex;align-items:center;justify-content:center;
+    border:1px solid rgba(255,255,255,.12);
+    border-radius:50%;
+    background:#101010;
+    font-size:20px;
+    transition:.3s ease;
+  }
+  .menu-toggle:active{background:var(--rojo);transform:scale(.94);}
+
+  .menu{
+    top:64px;
+    padding:12px;
+    gap:6px;
+    background:rgba(5,5,5,.97);
+    box-shadow:0 20px 50px rgba(0,0,0,.55);
+  }
+  .menu.open a{
+    min-height:52px;
+    display:flex;align-items:center;
+    padding:0 18px;
+    border:1px solid rgba(255,255,255,.06);
+    border-radius:6px;
+    font-size:10px;
+  }
+  .menu.open a:active{background:var(--rojo);color:#fff;}
+
+  .hero{
+    min-height:100svh;
+    align-items:flex-end;
+    padding-top:64px;
+  }
+  .hero-content{
+    width:92%;
+    padding-bottom:48px;
+  }
+  .hero-small{
+    font-size:8px;
+    letter-spacing:2.5px;
+    margin-bottom:18px;
+  }
+  .hero h1{
+    font-size:clamp(62px,19vw,96px);
+    line-height:.82;
+    letter-spacing:1px;
+  }
+  .hero-description{
+    max-width:100%;
+    margin-top:22px;
+    font-size:13px;
+    line-height:1.65;
+  }
+  .hero-buttons{
+    gap:9px;
+    margin-top:25px;
+  }
+  .btn{
+    width:100%;
+    min-height:56px;
+    border-radius:6px;
+    font-size:9px;
+    letter-spacing:.7px;
+  }
+
+  .led-glow{width:260px;height:260px;filter:blur(75px);right:-40px;top:30%;}
+  .led-line{width:190px;opacity:.18;}
+  .led-line.one{top:25%;}
+  .led-line.two{top:60%;}
+  .led-line.three{top:42%;}
+  .led-line.four{top:76%;}
+  .mouse-light{display:none;}
+  .mouse-particles{display:none;}
+
+  section{padding:82px 5%;}
+  .section-title{font-size:clamp(52px,16vw,78px);}
+  .products-top{display:block;margin-bottom:38px;}
+  .products-top .description{margin-top:20px;}
+
+  .products-grid{
+    grid-template-columns:1fr 1fr;
+    gap:9px;
+  }
+  .product{min-height:390px;border-radius:7px;}
+  .product-info{padding:16px 13px;}
+  .product-info h3{font-size:23px;}
+  .product-type{font-size:7px;letter-spacing:2px;}
+  .product-price{font-size:8px;}
+  .product-actions{
+    grid-template-columns:1fr;
+    gap:6px;
+    margin-top:12px;
+  }
+  .product-actions button{padding:12px 4px;font-size:7px;}
+
+  .location-grid{gap:10px;margin-top:35px;}
+  .location-info{
+    min-height:auto;
+    padding:28px 22px;
+    gap:28px;
+    border-radius:7px;
+  }
+  .location-info h3{font-size:52px;}
+  .location-info p{font-size:12px;}
+  .map,.map iframe{min-height:340px;}
+  .map{border-radius:7px;}
+
+  .contact{padding-bottom:100px;}
+  .contact h2{font-size:clamp(55px,17vw,82px);}
+  .contact-description{font-size:12px;margin:22px auto;}
+  .socials{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:8px;
+    margin-top:28px;
+  }
+  .social{
+    min-width:0;
+    width:100%;
+    height:54px;
+    border-radius:6px;
+    font-size:8px;
+  }
+  .social:active{
+    background:var(--rojo);
+    border-color:var(--rojo);
+    transform:scale(.97);
+  }
+
+  .cart{
+    width:100%;
+    right:-100%;
+    border-left:0;
+    border-top:1px solid rgba(255,255,255,.08);
+  }
+  .cart.active{right:0;}
+  .cart-head{height:68px;padding:0 18px;}
+  .cart-head h3{font-size:27px;}
+  .cart-list{padding:14px 18px;}
+  .cart-footer{padding:16px 18px calc(16px + env(safe-area-inset-bottom));}
+  .checkout{min-height:54px;border-radius:5px;}
+
+  .checkout-modal{
+    padding:0;
+    align-items:stretch;
+  }
+  .checkout-box{
+    width:100%;
+    height:100svh;
+    max-height:none;
+    border:0;
+    padding:76px 20px calc(28px + env(safe-area-inset-bottom));
+    border-radius:0;
+  }
+  .checkout-box h3{font-size:clamp(42px,13vw,65px);}
+  .checkout-message{font-size:11px;line-height:1.7;margin-top:18px;}
+  .form-grid{grid-template-columns:1fr;gap:9px;}
+  .field.full{grid-column:auto;}
+  .field input,.field textarea{font-size:16px;min-height:50px;}
+  .payment-options{grid-template-columns:1fr 1fr;gap:8px;}
+  .payment{min-height:58px;}
+  .checkout-actions{flex-direction:column;gap:8px;}
+  .checkout-actions button{width:100%;min-height:54px;}
+
+  .checkout-lines::before,.checkout-lines::after{width:2px;}
+  .checkout-box::before,.checkout-box::after{height:2px;}
+
+  .footer{
+    padding:35px 5%;
+    flex-direction:column;
+    align-items:center;
+    text-align:center;
+    gap:10px;
+  }
+  .footer-brand img{width:38px;height:38px;}
+
+  .whatsapp-float{
+    right:16px;
+    bottom:calc(16px + env(safe-area-inset-bottom));
+    width:54px;height:54px;
+    display:flex;align-items:center;justify-content:center;
+    border-radius:50%;
+    box-shadow:0 10px 30px rgba(0,0,0,.5);
+  }
+}
+
+@media (max-width:390px){
+  .logo-title{font-size:20px;}
+  .cart-button{min-width:82px;padding:9px 10px;}
+  .hero h1{font-size:clamp(55px,18vw,78px);}
+  .products-grid{grid-template-columns:1fr;}
+  .product{min-height:430px;}
+  .socials{grid-template-columns:1fr;}
+}
+
+@media (hover:none){
+  .btn:hover,.social:hover,.product:hover,.cart-button:hover,.header-whatsapp:hover{
+    transform:none;
+  }
+  .btn:active,.social:active,.product:active{
+    transform:scale(.985);
+  }
+}
+
+/* Líneas que aparecen al tocar/mover el dedo en el fondo */
+.touch-led{
+  position:absolute;
+  width:120px;height:1px;
+  background:linear-gradient(90deg,transparent,var(--rojo),transparent);
+  box-shadow:0 0 10px rgba(225,6,0,.55);
+  pointer-events:none;
+  opacity:0;
+  animation:touchLed .7s ease-out forwards;
+  transform:rotate(-18deg);
+}
+@keyframes touchLed{
+  0%{opacity:0;transform:translateX(-20px) rotate(-18deg) scaleX(.5);}
+  25%{opacity:.65;}
+  100%{opacity:0;transform:translateX(45px) rotate(-18deg) scaleX(1.15);}
+}
+</style>
+</head>
+
+
+<body>
+
+
+<!-- =========================================================
+     MOUSE
+========================================================= -->
+
+<div
+    class="mouse-light"
+    id="mouseLight"
+></div>
+
+<div
+    class="mouse-particles"
+    id="mouseParticles"
+></div>
+
+
+<!-- =========================================================
+     INTRO
+========================================================= -->
+
+<div
+    class="intro"
+    id="intro"
+>
+
+    <div class="intro-content">
+
+        <img
+            src="logo-edwin.png"
+            class="intro-logo"
+            alt="EdwinGraphics"
+        >
+
+        <div class="intro-name">
+            Edwin<span>Graphics</span>
+        </div>
+
+        <div class="intro-line"></div>
+
+        <div class="intro-sub">
+            DISEÑO · CALCOMANÍAS · PERSONALIZACIÓN
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================================
+     HEADER
+========================================================= -->
+
+<header>
+
+<nav class="nav">
+
+
+<a
+    href="#inicio"
+    class="logo"
+>
+
+    <img
+        src="logo-edwin.png"
+        alt="EdwinGraphics"
+    >
+
+    <div class="logo-title">
+        Edwin<span>Graphics</span>
+    </div>
+
+</a>
+
+
+<div
+    class="menu"
+    id="menu"
+>
+
+    <a href="#inicio">
+        INICIO
+    </a>
+
+    <a href="#productos">
+        PRODUCTOS
+    </a>
+
+    <a href="#ubicacion">
+        UBICACIÓN
+    </a>
+
+    <a href="#contacto">
+        CONTACTO
+    </a>
+
+</div>
+
+
+<div class="header-right">
+
+
+<button
+    class="cart-button"
+    onclick="openCart()"
+>
+
+    CARRITO
+
+    <span
+        class="cart-number"
+        id="cartNumber"
+    >
+        0
+    </span>
+
+</button>
+
+
+<a
+    href="https://wa.me/573222493522"
+    target="_blank"
+    rel="noopener"
+    class="header-whatsapp"
+>
+    WHATSAPP
+</a>
+
+
+<button
+    class="menu-toggle"
+    id="menuToggle"
+>
+    ☰
+</button>
+
+
+</div>
+
+</nav>
+
+</header>
+
+
+<!-- =========================================================
+     HERO
+========================================================= -->
+
+<section
+    class="hero"
+    id="inicio"
+>
+
+
+<div class="led-background">
+
+    <div class="led-glow"></div>
+
+    <div class="led-line one"></div>
+
+    <div class="led-line two white"></div>
+
+    <div class="led-line three"></div>
+
+    <div class="led-line four white"></div>
+
+    <span class="particle"></span>
+    <span class="particle"></span>
+    <span class="particle"></span>
+    <span class="particle"></span>
+    <span class="particle"></span>
+
+</div>
+
+
+<div class="hero-content reveal">
+
+
+    <div class="hero-small">
+        EDWINCALCOMANIAS · EDWINGRAPHICS
+    </div>
+
+
+    <h1>
+        TU MOTO.<br>
+        <span>TU IDENTIDAD.</span>
+    </h1>
+
+
+    <p class="hero-description">
+
+        <strong>
+            Si quieres personalizar tu moto,
+            no te detengas con nosotros.
+        </strong>
+
+        EdwinCalcomanias puede llevar
+        tu moto a otro nivel.
+
+    </p>
+
+
+    <div class="hero-buttons">
+
+        <a
+            href="#productos"
+            class="btn btn-red"
+        >
+            VER PRODUCTOS
+        </a>
+
+
+        <a
+            href="#contacto"
+            class="btn btn-outline"
+        >
+            CONOCER EDWINGRAPHICS
+        </a>
+
+    </div>
+
+
+</div>
+
+</section>
+
+
+<!-- =========================================================
+     PRODUCTOS
+========================================================= -->
+
+<section
+    class="products"
+    id="productos"
+>
+
+<div class="container">
+
+
+<div class="products-top reveal">
+
+
+    <div>
+
+        <div class="label">
+            COLECCIÓN EDWINGRAPHICS
+        </div>
+
+        <h2 class="section-title">
+            DISEÑOS<br>
+            QUE HABLAN.
+        </h2>
+
+    </div>
+
+
+    <p class="description">
+
+        Elige el diseño que más te guste,
+        agrégalo a tu carrito y continúa
+        con tu pedido.
+
+    </p>
+
+
+</div>
+
+
+<div class="products-grid">
+
+
+<!-- 1 -->
+
+<article class="product reveal">
+
+    <div class="product-visual"></div>
+
+    <div class="product-info">
+
+        <div class="product-type">
+            GUARDABARRO
+        </div>
+
+        <h3>
+            Diseño 1
+        </h3>
+
+        <div class="product-price">
+            <span>●</span>
+            POR CONFIRMAR
+        </div>
+
+        <div class="product-actions">
+
+            <button
+                class="details"
+                onclick="showDetails('Guardabarro — Diseño 1')"
+            >
+                VER DETALLES
+            </button>
+
+            <button
+                class="add-cart"
+                onclick="addToCart('Guardabarro — Diseño 1')"
+            >
+                AÑADIR AL CARRITO
+            </button>
+
+        </div>
+
+    </div>
+
+</article>
+
+
+<!-- 2 -->
+
+<article class="product reveal">
+
+    <div class="product-visual"></div>
+
+    <div class="product-info">
+
+        <div class="product-type">
+            GUARDABARRO
+        </div>
+
+        <h3>
+            Diseño 2
+        </h3>
+
+        <div class="product-price">
+            <span>●</span>
+            POR CONFIRMAR
+        </div>
+
+        <div class="product-actions">
+
+            <button
+                class="details"
+                onclick="showDetails('Guardabarro — Diseño 2')"
+            >
+                VER DETALLES
+            </button>
+
+            <button
+                class="add-cart"
+                onclick="addToCart('Guardabarro — Diseño 2')"
+            >
+                AÑADIR AL CARRITO
+            </button>
+
+        </div>
+
+    </div>
+
+</article>
+
+
+<!-- 3 -->
+
+<article class="product reveal">
+
+    <div class="product-visual"></div>
+
+    <div class="product-info">
+
+        <div class="product-type">
+            GUARDABARRO
+        </div>
+
+        <h3>
+            Diseño 3
+        </h3>
+
+        <div class="product-price">
+            <span>●</span>
+            POR CONFIRMAR
+        </div>
+
+        <div class="product-actions">
+
+            <button
+                class="details"
+                onclick="showDetails('Guardabarro — Diseño 3')"
+            >
+                VER DETALLES
+            </button>
+
+            <button
+                class="add-cart"
+                onclick="addToCart('Guardabarro — Diseño 3')"
+            >
+                AÑADIR AL CARRITO
+            </button>
+
+        </div>
+
+    </div>
+
+</article>
+
+
+<!-- 4 -->
+
+<article class="product reveal">
+
+    <div class="product-visual"></div>
+
+    <div class="product-info">
+
+        <div class="product-type">
+            TANQUE
+        </div>
+
+        <h3>
+            Diseño 1
+        </h3>
+
+        <div class="product-price">
+            <span>●</span>
+            POR CONFIRMAR
+        </div>
+
+        <div class="product-actions">
+
+            <button
+                class="details"
+                onclick="showDetails('Tanque — Diseño 1')"
+            >
+                VER DETALLES
+            </button>
+
+            <button
+                class="add-cart"
+                onclick="addToCart('Tanque — Diseño 1')"
+            >
+                AÑADIR AL CARRITO
+            </button>
+
+        </div>
+
+    </div>
+
+</article>
+
+
+<!-- 5 -->
+
+<article class="product reveal">
+
+    <div class="product-visual"></div>
+
+    <div class="product-info">
+
+        <div class="product-type">
+            TANQUE
+        </div>
+
+        <h3>
+            Diseño 2
+        </h3>
+
+        <div class="product-price">
+            <span>●</span>
+            POR CONFIRMAR
+        </div>
+
+        <div class="product-actions">
+
+            <button
+                class="details"
+                onclick="showDetails('Tanque — Diseño 2')"
+            >
+                VER DETALLES
+            </button>
+
+            <button
+                class="add-cart"
+                onclick="addToCart('Tanque — Diseño 2')"
+            >
+                AÑADIR AL CARRITO
+            </button>
+
+        </div>
+
+    </div>
+
+</article>
+
+
+<!-- 6 -->
+
+<article class="product reveal">
+
+    <div class="product-visual"></div>
+
+    <div class="product-info">
+
+        <div class="product-type">
+            LATERALES
+        </div>
+
+        <h3>
+            Diseño 1
+        </h3>
+
+        <div class="product-price">
+            <span>●</span>
+            POR CONFIRMAR
+        </div>
+
+        <div class="product-actions">
+
+            <button
+                class="details"
+                onclick="showDetails('Laterales — Diseño 1')"
+            >
+                VER DETALLES
+            </button>
+
+            <button
+                class="add-cart"
+                onclick="addToCart('Laterales — Diseño 1')"
+            >
+                AÑADIR AL CARRITO
+            </button>
+
+        </div>
+
+    </div>
+
+</article>
+
+
+<!-- 7 -->
+
+<article class="product reveal">
+
+    <div class="product-visual"></div>
+
+    <div class="product-info">
+
+        <div class="product-type">
+            LATERALES
+        </div>
+
+        <h3>
+            Diseño 2
+        </h3>
+
+        <div class="product-price">
+            <span>●</span>
+            POR CONFIRMAR
+        </div>
+
+        <div class="product-actions">
+
+            <button
+                class="details"
+                onclick="showDetails('Laterales — Diseño 2')"
+            >
+                VER DETALLES
+            </button>
+
+            <button
+                class="add-cart"
+                onclick="addToCart('Laterales — Diseño 2')"
+            >
+                AÑADIR AL CARRITO
+            </button>
+
+        </div>
+
+    </div>
+
+</article>
+
+
+<!-- 8 -->
+
+<article class="product reveal">
+
+    <div class="product-visual"></div>
+
+    <div class="product-info">
+
+        <div class="product-type">
+            CARENAJE
+        </div>
+
+        <h3>
+            Diseño 1
+        </h3>
+
+        <div class="product-price">
+            <span>●</span>
+            POR CONFIRMAR
+        </div>
+
+        <div class="product-actions">
+
+            <button
+                class="details"
+                onclick="showDetails('Carenaje — Diseño 1')"
+            >
+                VER DETALLES
+            </button>
+
+            <button
+                class="add-cart"
+                onclick="addToCart('Carenaje — Diseño 1')"
+            >
+                AÑADIR AL CARRITO
+            </button>
+
+        </div>
+
+    </div>
+
+</article>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================================================
+     UBICACIÓN
+========================================================= -->
+
+<section
+    class="location"
+    id="ubicacion"
+>
+
+<div class="container">
+
+
+<div class="reveal">
+
+    <div class="label">
+        VISÍTANOS
+    </div>
+
+    <h2 class="section-title">
+        ENCUÉNTRANOS.
+    </h2>
+
+</div>
+
+
+<div class="location-grid">
+
+
+<div class="location-info reveal">
+
+
+    <div>
+
+        <h3>
+            PALOS<br>
+            VERDE
+        </h3>
+
+        <p>
+            Local 1 y Local 2
+        </p>
+
+    </div>
+
+
+    <div class="location-note">
+
+        <p>
+
+            Ven a conocernos y hablemos
+            personalmente sobre el diseño
+            que quieres para tu moto.
+
+        </p>
+
+    </div>
+
+
+    <a
+        href="https://maps.app.goo.gl/SuuGiocyBzWijY7E7"
+        target="_blank"
+        rel="noopener"
+        class="btn btn-red"
+    >
+        VER RUTA
+    </a>
+
+
+</div>
+
+
+<div class="map reveal">
+
+    <iframe
+        src="https://www.google.com/maps?q=4.2630666,-73.5584399&z=17&output=embed"
+        loading="lazy"
+        title="Ubicación EdwinGraphics"
+    ></iframe>
+
+</div>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================================================
+     CONTACTO
+========================================================= -->
+
+<section
+    class="contact"
+    id="contacto"
+>
+
+<div class="container reveal">
+
+
+    <div class="label">
+        EDWINGRAPHICS
+    </div>
+
+
+    <h2>
+
+        LLEVA TU MOTO<br>
+
+        <span>A OTRO NIVEL.</span>
+
+    </h2>
+
+
+    <p class="contact-description">
+
+        Si quieres personalizar tu moto,
+        no te detengas con nosotros.
+        EdwinCalcomanias puede llevar
+        tu moto a otro nivel.
+
+    </p>
+
+
+    <div class="socials">
+
+
+        <a
+            href="https://wa.me/573222493522"
+            target="_blank"
+            rel="noopener"
+            class="social"
+        >
+            <span>WHATSAPP</span>
+        </a>
+
+
+        <a
+            href="https://www.instagram.com/ediwngrapichs?igsh=MXQ1em9iNHNwOG83dw=="
+            target="_blank"
+            rel="noopener"
+            class="social"
+        >
+            <span>INSTAGRAM</span>
+        </a>
+
+
+        <a
+            href="https://www.tiktok.com/@edwincalcomanias?_r=1&_t=ZS-98seQZ9qe1c"
+            target="_blank"
+            rel="noopener"
+            class="social"
+        >
+            <span>TIKTOK</span>
+        </a>
+
+
+        <a
+            href="https://www.facebook.com/share/1Jp7fpSR3B/?mibextid=wwXIfr"
+            target="_blank"
+            rel="noopener"
+            class="social"
+        >
+            <span>FACEBOOK</span>
+        </a>
+
+
+    </div>
+
+</div>
+
+</section>
+
+
+<!-- =========================================================
+     FOOTER
+========================================================= -->
+
+<footer>
+
+<div class="footer">
+
+
+    <div class="footer-brand">
+
+        <img
+            src="logo-edwin.png"
+            alt="EdwinGraphics"
+        >
+
+        EdwinGraphics
+
+    </div>
+
+
+    <div>
+        © 2026 EdwinGraphics
+    </div>
+
+
+    <div>
+        Todos los derechos reservados.
+    </div>
+
+
+</div>
+
+</footer>
+
+
+<!-- =========================================================
+     WHATSAPP
+========================================================= -->
+
+<a
+    href="https://wa.me/573222493522"
+    target="_blank"
+    rel="noopener"
+    class="whatsapp-float"
+>
+    WA
+</a>
+
+
+<!-- =========================================================
+     CARRITO
+========================================================= -->
+
+<div
+    class="cart-overlay"
+    id="cartOverlay"
+    onclick="closeCart()"
+></div>
+
+
+<aside
+    class="cart"
+    id="cart"
+>
+
+
+    <div class="cart-head">
+
+        <h3>
+            MI CARRITO
+        </h3>
+
+        <button
+            class="cart-close"
+            onclick="closeCart()"
+        >
+            ×
+        </button>
+
+    </div>
+
+
+    <div
+        class="cart-list"
+        id="cartList"
+    ></div>
+
+
+    <div class="cart-footer">
+
+
+        <div class="cart-total">
+
+            <span>
+                Productos
+            </span>
+
+            <strong
+                id="cartTotalItems"
+            >
+                0
+            </strong>
+
+        </div>
+
+
+        <button
+            class="checkout"
+            onclick="openCheckout()"
+        >
+            PROCEDER AL PAGO
+        </button>
+
+
+    </div>
+
+</aside>
+
+
+<!-- =========================================================
+     CHECKOUT
+========================================================= -->
+
+<div
+    class="checkout-modal"
+    id="checkoutModal"
+>
+
+
+<div class="checkout-box">
+
+
+    <button
+        class="checkout-close"
+        onclick="closeCheckout()"
+    >
+        ×
+    </button>
+
+
+    <div class="checkout-lines"></div>
+
+
+    <div class="checkout-header">
+
+
+        <div class="checkout-label">
+            EDWINGRAPHICS · PEDIDO
+        </div>
+
+
+        <h3>
+
+            TU DISEÑO<br>
+
+            <span>YA CASI ES TUYO.</span>
+
+        </h3>
+
+
+        <p class="checkout-message">
+
+            Hola 👋, te habla Edwin.
+
+            El diseño que escogiste está
+            <strong>muy chimba, bro.</strong>
+
+            Ahora hagamos el pago desde
+            tu forma de pago favorita para
+            poder recibir tu diseño.
+
+            <br><br>
+
+            No olvides poner tu
+            <strong>dirección exacta</strong>
+            para poder gestionar correctamente
+            tu pedido.
+
+        </p>
+
+    </div>
+
+
+    <div class="checkout-section-title">
+        DATOS DE ENTREGA
+    </div>
+
+
+    <div class="form-grid">
+
+
+        <input
+            class="field"
+            id="customerName"
+            placeholder="Nombre completo"
+            type="text"
+        >
+
+
+        <input
+            class="field"
+            id="customerPhone"
+            placeholder="Número de teléfono"
+            type="tel"
+        >
+
+
+        <input
+            class="field"
+            id="customerEmail"
+            placeholder="Correo electrónico"
+            type="email"
+        >
+
+
+        <input
+            class="field"
+            id="customerCity"
+            placeholder="Ciudad"
+            type="text"
+        >
+
+
+        <input
+            class="field full"
+            id="customerAddress"
+            placeholder="Dirección exacta de entrega"
+            type="text"
+        >
+
+
+        <input
+            class="field full"
+            id="customerReference"
+            placeholder="Referencia adicional (opcional)"
+            type="text"
+        >
+
+    </div>
+
+
+    <div class="checkout-section-title">
+        ELIGE TU FORMA DE PAGO
+    </div>
+
+
+    <div class="payment-options">
+
+
+        <button
+            class="payment"
+            data-payment="PSE"
+            onclick="selectPayment(this)"
+        >
+
+            <strong>
+                PSE
+            </strong>
+
+            <small>
+                Débito desde tu banco
+            </small>
+
+        </button>
+
+
+        <button
+            class="payment"
+            data-payment="NEQUI"
+            onclick="selectPayment(this)"
+        >
+
+            <strong>
+                NEQUI
+            </strong>
+
+            <small>
+                Pago desde Nequi
+            </small>
+
+        </button>
+
+
+        <button
+            class="payment"
+            data-payment="TARJETA"
+            onclick="selectPayment(this)"
+        >
+
+            <strong>
+                TARJETA
+            </strong>
+
+            <small>
+                Crédito o débito
+            </small>
+
+        </button>
+
+
+    </div>
+
+
+    <div class="checkout-summary">
+
+        <span>
+            Productos seleccionados
+        </span>
+
+        <strong id="checkoutItems">
+            0
+        </strong>
+
+    </div>
+
+
+    <div class="checkout-actions">
+
+
+        <button
+            class="cancel"
+            onclick="closeCheckout()"
+        >
+            VOLVER AL CARRITO
+        </button>
+
+
+        <button
+            class="pay"
+            onclick="goToShopify()"
+        >
+            CONTINUAR AL PAGO
+        </button>
+
+
+    </div>
+
+
+    <div class="secure-message">
+
+        Tu información se utilizará
+        únicamente para gestionar tu pedido.
+
+    </div>
+
+
+</div>
+
+</div>
+
+
+<!-- =========================================================
+     DETALLES
+========================================================= -->
+
+<div
+    class="details-modal"
+    id="detailsModal"
+    onclick="closeDetailsOutside(event)"
+>
+
+
+<div class="details-box">
+
+
+    <button
+        class="details-close"
+        onclick="closeDetails()"
+    >
+        ×
+    </button>
+
+
+    <div class="details-label">
+        EDWINGRAPHICS
+    </div>
+
+
+    <h3
+        id="detailsTitle"
+    >
+        Producto
+    </h3>
+
+
+    <p>
+
+        Diseño disponible para
+        personalización.
+
+        El precio y disponibilidad
+        se confirmarán antes de
+        procesar el pedido.
+
+    </p>
+
+
+    <a
+        href="https://wa.me/573222493522"
+        target="_blank"
+        rel="noopener"
+        class="btn btn-red"
+    >
+        CONSULTAR
+    </a>
+
+
+</div>
+
+</div>
+
+
+<script>
+
+/* =========================================================
+   CONFIGURACIÓN SHOPIFY
+========================================================= */
+
+/*
+    MAÑANA, CUANDO TENGAS SHOPIFY,
+    AQUÍ CONECTAREMOS EL CHECKOUT REAL.
+
+    Por ahora déjalo vacío.
+
+*/
+
+const SHOPIFY_CHECKOUT_URL = "";
+
+
+/* =========================================================
+   INTRO
+========================================================= */
+
+window.addEventListener(
+    "load",
+    () => {
+
+        setTimeout(
+            () => {
+
+                document
+                    .getElementById("intro")
+                    .classList
+                    .add("hidden");
+
+            },
+            3000
+        );
+
+    }
+);
+
+
+/* =========================================================
+   MENU
+========================================================= */
+
+const menuToggle =
+    document.getElementById(
+        "menuToggle"
+    );
+
+const menu =
+    document.getElementById(
+        "menu"
+    );
+
+
+menuToggle.addEventListener(
+    "click",
+    () => {
+
+        menu.classList.toggle(
+            "open"
+        );
+
+    }
+);
+
+
+document
+    .querySelectorAll(".menu a")
+    .forEach(
+        link => {
+
+            link.addEventListener(
+                "click",
+                () => {
+
+                    menu.classList.remove(
+                        "open"
+                    );
+
+                }
+            );
+
+        }
+    );
+
+
+/* =========================================================
+   MOUSE INTERACTIVO
+========================================================= */
+
+const mouseLight =
+    document.getElementById(
+        "mouseLight"
+    );
+
+const mouseParticles =
+    document.getElementById(
+        "mouseParticles"
+    );
+
+let lastParticle = 0;
+
+
+document.addEventListener(
+    "mousemove",
+    event => {
+
+        mouseLight.style.left =
+            event.clientX + "px";
+
+        mouseLight.style.top =
+            event.clientY + "px";
+
+
+        const now =
+            Date.now();
+
+
+        if(
+            now - lastParticle < 70
+        ){
+            return;
+        }
+
+
+        lastParticle = now;
+
+
+        const particle =
+            document.createElement(
+                "span"
+            );
+
+
+        particle.className =
+            "mouse-particle";
+
+
+        particle.style.left =
+            event.clientX + "px";
+
+        particle.style.top =
+            event.clientY + "px";
+
+
+        const x =
+            (Math.random() - .5) * 90;
+
+        const y =
+            (Math.random() - .5) * 90;
+
+
+        particle.style.setProperty(
+            "--move-x",
+            x + "px"
+        );
+
+        particle.style.setProperty(
+            "--move-y",
+            y + "px"
+        );
+
+
+        mouseParticles.appendChild(
+            particle
+        );
+
+
+        setTimeout(
+            () => {
+                particle.remove();
+            },
+            800
+        );
+
+    }
+);
+
+
+/* =========================================================
+   CARRITO
+========================================================= */
+
+let cart = [];
+
+
+function addToCart(product){
+
+    cart.push(product);
+
+    updateCart();
+
+    openCart();
+
+}
+
+
+function updateCart(){
+
+    const list =
+        document.getElementById(
+            "cartList"
+        );
+
+    const number =
+        document.getElementById(
+            "cartNumber"
+        );
+
+    const total =
+        document.getElementById(
+            "cartTotalItems"
+        );
+
+
+    number.textContent =
+        cart.length;
+
+    total.textContent =
+        cart.length;
+
+
+    if(
+        cart.length === 0
+    ){
+
+        list.innerHTML = `
+
+            <div class="empty-cart">
+
+                Tu carrito está vacío.
+
+                <br><br>
+
+                Agrega un diseño
+                para comenzar.
+
+            </div>
+
+        `;
+
+        return;
+    }
+
+
+    list.innerHTML =
+        cart.map(
+            (item,index) => `
+
+                <div class="cart-item">
+
+                    <div
+                        class="cart-item-info"
+                    >
+
+                        <strong>
+                            ${item}
+                        </strong>
+
+                        <span>
+                            Precio por confirmar
+                        </span>
+
+                    </div>
+
+                    <button
+                        class="remove"
+                        onclick="removeFromCart(${index})"
+                    >
+                        ×
+                    </button>
+
+                </div>
+
+            `
+        ).join("");
+
+}
+
+
+function removeFromCart(index){
+
+    cart.splice(
+        index,
+        1
+    );
+
+    updateCart();
+
+}
+
+
+function openCart(){
+
+    document
+        .getElementById("cart")
+        .classList
+        .add("active");
+
+    document
+        .getElementById("cartOverlay")
+        .classList
+        .add("active");
+
+}
+
+
+function closeCart(){
+
+    document
+        .getElementById("cart")
+        .classList
+        .remove("active");
+
+    document
+        .getElementById("cartOverlay")
+        .classList
+        .remove("active");
+
+}
+
+
+/* =========================================================
+   CHECKOUT
+========================================================= */
+
+function openCheckout(){
+
+    if(
+        cart.length === 0
+    ){
+
+        alert(
+            "Tu carrito está vacío."
+        );
+
+        return;
+    }
+
+
+    document.getElementById(
+        "checkoutItems"
+    ).textContent =
+        cart.length;
+
+
+    document
+        .getElementById(
+            "checkoutModal"
+        )
+        .classList
+        .add("active");
+
+}
+
+
+function closeCheckout(){
+
+    document
+        .getElementById(
+            "checkoutModal"
+        )
+        .classList
+        .remove("active");
+
+}
+
+
+/* =========================================================
+   MÉTODO DE PAGO
+========================================================= */
+
+let selectedPayment = "";
+
+
+function selectPayment(button){
+
+    document
+        .querySelectorAll(
+            ".payment"
+        )
+        .forEach(
+            item => {
+
+                item.classList.remove(
+                    "active"
+                );
+
+            }
+        );
+
+
+    button.classList.add(
+        "active"
+    );
+
+
+    selectedPayment =
+        button.dataset.payment;
+
+}
+
+
+/* =========================================================
+   SHOPIFY
+========================================================= */
+
+function goToShopify(){
+
+    const name =
+        document
+            .getElementById(
+                "customerName"
+            )
+            .value
+            .trim();
+
+
+    const phone =
+        document
+            .getElementById(
+                "customerPhone"
+            )
+            .value
+            .trim();
+
+
+    const email =
+        document
+            .getElementById(
+                "customerEmail"
+            )
+            .value
+            .trim();
+
+
+    const city =
+        document
+            .getElementById(
+                "customerCity"
+            )
+            .value
+            .trim();
+
+
+    const address =
+        document
+            .getElementById(
+                "customerAddress"
+            )
+            .value
+            .trim();
+
+
+    if(
+        !name ||
+        !phone ||
+        !email ||
+        !city ||
+        !address
+    ){
+
+        alert(
+            "Completa todos los datos de entrega antes de continuar."
+        );
+
+        return;
+    }
+
+
+    if(
+        !selectedPayment
+    ){
+
+        alert(
+            "Selecciona una forma de pago."
+        );
+
+        return;
+    }
+
+
+    /*
+        GUARDAR INFORMACIÓN TEMPORALMENTE
+    */
+
+    localStorage.setItem(
+        "edwin_customer",
+        JSON.stringify({
+
+            name:name,
+
+            phone:phone,
+
+            email:email,
+
+            city:city,
+
+            address:address,
+
+            reference:
+                document
+                    .getElementById(
+                        "customerReference"
+                    )
+                    .value
+                    .trim(),
+
+            payment:
+                selectedPayment,
+
+            products:
+                cart
+
+        })
+    );
+
+
+    /*
+        SHOPIFY TODAVÍA NO ESTÁ CONECTADO
+    */
+
+    if(
+        !SHOPIFY_CHECKOUT_URL
+    ){
+
+        alert(
+
+            "El checkout de Shopify todavía no está conectado. " +
+
+            "Tus datos quedaron preparados. " +
+
+            "Cuando agregues el enlace de Shopify podremos " +
+
+            "conectar el pago real."
+
+        );
+
+        return;
+    }
+
+
+    /*
+        CUANDO SHOPIFY ESTÉ CONECTADO
+    */
+
+    window.location.href =
+        SHOPIFY_CHECKOUT_URL;
+
+}
+
+
+/* =========================================================
+   DETALLES
+========================================================= */
+
+function showDetails(name){
+
+    document
+        .getElementById(
+            "detailsTitle"
+        )
+        .textContent =
+            name;
+
+
+    document
+        .getElementById(
+            "detailsModal"
+        )
+        .classList
+        .add("active");
+
+}
+
+
+function closeDetails(){
+
+    document
+        .getElementById(
+            "detailsModal"
+        )
+        .classList
+        .remove("active");
+
+}
+
+
+function closeDetailsOutside(event){
+
+    if(
+        event.target.id ===
+        "detailsModal"
+    ){
+
+        closeDetails();
+
+    }
+
+}
+
+
+/* =========================================================
+   ESCAPE
+========================================================= */
+
+document.addEventListener(
+    "keydown",
+    event => {
+
+        if(
+            event.key === "Escape"
+        ){
+
+            closeCart();
+
+            closeCheckout();
+
+            closeDetails();
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   SCROLL REVEAL
+========================================================= */
+
+const observer =
+    new IntersectionObserver(
+        entries => {
+
+            entries.forEach(
+                entry => {
+
+                    if(
+                        entry.isIntersecting
+                    ){
+
+                        entry.target
+                            .classList
+                            .add("show");
+
+                        observer.unobserve(
+                            entry.target
+                        );
+
+                    }
+
+                }
+            );
+
+        },
+        {
+            threshold:.1
+        }
+    );
+
+
+document
+    .querySelectorAll(".reveal")
+    .forEach(
+        element => {
+
+            observer.observe(
+                element
+            );
+
+        }
+    );
+
+
+/* =========================================================
+   INICIAR CARRITO
+========================================================= */
+
+updateCart();
+
+</script>
+
+</body>
+</html>
